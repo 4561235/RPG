@@ -1,0 +1,54 @@
+Personnages:
+Attribut:
+point de vie
+point de magie
+point d'action
+
+casque   |
+Plastron | tenue 
+pantalon |
+
+arme
+
+Méthode:
+déplacer()
+utiliser(String objet)
+Attaquer(coordonée)
+
+
+---------------------
+
+PnJ:
+point de vie
+point de magie
+point d'action
+
+casque   |
+Plastron | tenue 
+pantalon |
+
+arme
+
+---------------------
+
+Carte
+tabCarte : [coordonéeX, coordonéeY, caractère, instance]
+//caractère: élément d ela carte (plaine, montagne, etc...)
+//instance: personnageà cette emplacement (joueur/ennemi)
+
+---------------------
+
+Objet:
+
+--------------------
+
+Arme:
+nom
+dégat
+
+--------------------
+
+Tenue:
+nom
+défense
+type //(casque, plastron, pantalon)
