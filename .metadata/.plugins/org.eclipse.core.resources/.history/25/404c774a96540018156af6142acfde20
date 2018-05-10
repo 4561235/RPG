@@ -28,7 +28,7 @@ public class testMap {
 		}
 		
 		maMap.remplacerSurLaMap(5, 5, 'P');
-		maMap.remplacerSurLaMap(2, 2, 'C');
+		maMap.remplacerSurLaMap(2, 5, 'P');
 		
 		maMap.dessinerMap();
 	

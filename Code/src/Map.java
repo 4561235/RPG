@@ -77,6 +77,20 @@ public class Map {
 		}
 	}
 	
+	public void remplacerSurLaMap(int x, int y, char lettre) //Un parametre en plus a mettre: l'instance du joueur
+	{
+		for(int i=0; i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null)
+			{
+				if(tableau[i].x==x && tableau[i].y==y )
+				{
+					tableau[i].lettre=lettre;
+				}
+			}
+		}
+	}
+	
 	public int getLongueur()
 	{
 		return longueur;
