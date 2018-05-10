@@ -1,0 +1,23 @@
+
+public class testMap {
+
+	public static void main(String[] args) {
+		
+		Map maMap = new Map(1,2);
+		System.out.println("longueur de la map:" +maMap.getLongueur());
+		System.out.println("largeur de la map:" +maMap.getLargeur());
+		
+		maMap.mettreSurLaMap(0, 0, 'a');
+		maMap.mettreSurLaMap(0, 1, 'a');
+
+	
+
+		
+
+	
+		
+		maMap.dessinerMap();
+	
+	}
+
+}

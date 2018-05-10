@@ -1,0 +1,78 @@
+
+public class Map {
+	
+	private int longueur;
+	private int largeur;
+	
+	private int tailleDuTableau = 100;
+	private coordonnees[] tableau = new coordonnees[tailleDuTableau];
+
+	
+	
+	public Map()
+	{
+		this.longueur=15;
+		this.largeur=15;
+		
+	}
+	
+	public Map(int longueur, int largeur)
+	{
+		this.longueur=longueur;
+		this.largeur=largeur;
+	}
+	
+	public void mettreSurLaMap(int x, int y, char lettre)
+	{
+		int nbElements = 0;
+		
+		for(int i=0;i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null)
+			{
+				nbElements = nbElements + 1;
+			}
+		}
+		
+		if(nbElements==0)
+		{
+			this.tableau[nbElements] = new coordonnees(x,y,lettre);
+		}
+		else
+		{
+			this.tableau[nbElements + 1] = new coordonnees(x,y,lettre);
+		}
+		
+		//System.out.println(tableau[0].x);
+		System.out.println("nb" +nbElements);
+	}
+	
+	public void dessinerMap()
+	{
+		for(int j=0; i<tailleDuTableau;j++)
+		{
+			for(int i=0; i<tailleDuTableau;i++)
+			{
+				if(tableau[i] != null)
+				{
+					if(tableau[i].x == j)
+					{
+						System.out.println(tableau[i].lettre);
+					}
+				}
+			}
+		}
+	}
+	
+	public int getLongueur()
+	{
+		return longueur;
+	}
+	
+	public int getLargeur()
+	{
+		return largeur;
+	}
+	
+
+}

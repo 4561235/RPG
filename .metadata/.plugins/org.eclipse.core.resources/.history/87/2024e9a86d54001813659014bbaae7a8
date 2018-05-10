@@ -1,0 +1,13 @@
+
+public class Coordonnees {
+	
+	public int x;
+	public int y;
+	public char lettre;
+	
+	public coordonnees()
+	{
+		
+	}
+
+}

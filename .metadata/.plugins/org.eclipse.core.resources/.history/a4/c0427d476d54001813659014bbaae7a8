@@ -1,0 +1,8 @@
+
+public class coordonnees {
+	
+	public int x;
+	public int y;
+	public char lettre;
+
+}
