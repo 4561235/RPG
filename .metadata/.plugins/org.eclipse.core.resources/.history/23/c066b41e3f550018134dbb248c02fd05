@@ -56,13 +56,13 @@ public class Map {
 			{
 				if(tableau[i] != null)
 				{
-					if(tableau[i].getY() == j)
+					if(tableau[i].y == j)
 					{				
 						for(int a=0; a<tailleDuTableau;a++)
 						{
-							if(tableau[i].getX() == a)
+							if(tableau[i].x == a)
 							{
-								System.out.print(tableau[i].getLettre());
+								System.out.print(tableau[i].lettre);
 								nb = nb + 1;
 								
 								if(nb == longueur)
@@ -83,9 +83,9 @@ public class Map {
 		{
 			if(tableau[i] != null)
 			{
-				if(tableau[i].getX()==x && tableau[i].getY()==y )
+				if(tableau[i].x==x && tableau[i].y==y )
 				{
-					tableau[i].setLettre(lettre);
+					tableau[i].lettre=lettre;
 				}
 			}
 		}

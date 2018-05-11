@@ -85,7 +85,7 @@ public class Map {
 			{
 				if(tableau[i].getX()==x && tableau[i].getY()==y )
 				{
-					tableau[i].setLettre(lettre);
+					tableau[i].getLettre()=lettre;
 				}
 			}
 		}

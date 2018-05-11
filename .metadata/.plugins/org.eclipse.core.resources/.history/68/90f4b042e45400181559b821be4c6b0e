@@ -27,9 +27,9 @@ public class testMap {
 			maMap.mettreSurLaMap(10, y, '#');
 		}
 		
-		maMap.remplacerSurLaMap(5, 3, 'P');
+		maMap.remplacerSurLaMap(5, 5, 'P');
 		maMap.remplacerSurLaMap(2, 2, 'C');
-		maMap.remplacerSurLaMap(6, 6, 'A');
+		maMap.remplacerSurLaMap(0, 0, 'A');
 		
 		maMap.dessinerMap();
 	
