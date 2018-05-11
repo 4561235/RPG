@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagrammesRPG" version="4">
+  <OBJECT>
+    <ID name="diagrammesRPG" mc="Standard.Project" uid="451cd675-dba1-4ac1-a59c-03cd65b4f82d"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[diagrammesRPG]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="diagrammesrpg" mc="Standard.Package" uid="725102be-078a-455e-aa5b-f9d22a86d47a"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="diagrammesRPG" mc="Infrastructure.DiagramSet" uid="980892e5-4660-4f58-abf0-5b4d26bf1b1c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

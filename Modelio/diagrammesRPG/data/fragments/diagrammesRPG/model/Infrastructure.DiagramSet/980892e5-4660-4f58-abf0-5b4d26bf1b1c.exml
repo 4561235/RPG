@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagrammesRPG" version="4">
+  <OBJECT>
+    <ID name="diagrammesRPG" mc="Infrastructure.DiagramSet" uid="980892e5-4660-4f58-abf0-5b4d26bf1b1c"/>
+    <PID name="diagrammesRPG" mc="Standard.Project" uid="451cd675-dba1-4ac1-a59c-03cd65b4f82d"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[diagrammesRPG]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
