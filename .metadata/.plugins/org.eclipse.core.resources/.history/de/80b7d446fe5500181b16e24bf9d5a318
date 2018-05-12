@@ -11,8 +11,8 @@ public class Map {
 	
 	public Map()
 	{
-		this.longueur=10;
-		this.largeur=10;
+		this.longueur=15;
+		this.largeur=15;
 		
 	}
 	
