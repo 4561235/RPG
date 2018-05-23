@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 
 public class testMap {
 
 	public static void main(String[] args) {
 		
-		Map maMap = new Map(10,10);
+		Map maMap = new Map(10,15);
 		System.out.println("longueur de la map:" +maMap.getLongueur());
 		System.out.println("largeur de la map:" +maMap.getLargeur());
 		
@@ -27,11 +28,23 @@ public class testMap {
 			maMap.mettreSurLaMap(10, y, '#');
 		}
 		
-		maMap.remplacerSurLaMap(5, 3, 'P');
-		maMap.remplacerSurLaMap(2, 2, 'C');
-		maMap.remplacerSurLaMap(6, 6, 'A');
+		Personnage a = new Personnage();
+		
+		maMap.remplacerSurLaMap(3, 2, 'P',a);
+		maMap.remplacerSurLaMap(2, 2, 'C',null);
+		maMap.remplacerSurLaMap(6, 6, 'A',null);
 		
 		maMap.dessinerMap();
+		
+		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(2,2);
+		System.out.println(liste.get(0).toString());
+		System.out.println(liste.get(1).toString());
+		System.out.println(liste.get(2).toString());
+		System.out.println(liste.get(3).toString());
+		System.out.println();
+		System.out.println("Je cherche le personnage donner en parametre");
+		System.out.println("resultat de ma recherche: " +maMap.chercherPersonnage(a).toString());
+		
 	
 	}
 
