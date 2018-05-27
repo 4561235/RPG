@@ -10,7 +10,7 @@ public class testMap {
 		
 		for(int x=0;x<10;x++)
 		{
-			maMap.mettreSurLaMap(x, 10, '#');
+			maMap.mettreSurLaMap(x, 9, '#');
 		}
 		
 		for(int x=0;x<10;x++)
@@ -25,8 +25,9 @@ public class testMap {
 			{
 				maMap.mettreSurLaMap(x, y, ' ');
 			}
-			maMap.mettreSurLaMap(10, y, '#');
+			maMap.mettreSurLaMap(9, y, '#');
 		}
+
 		
 		Personnage a = new Personnage();
 		
@@ -34,20 +35,15 @@ public class testMap {
 		maMap.remplacerSurLaMap(2, 2, 'C',null);
 		maMap.remplacerSurLaMap(1, 2, 'A',null);
 		
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"gauche");
-		maMap.deplacerPersonnage(a,"bas");
+
 
 		
 		
-		
+		maMap.remplacerSurLaMap(5, 8, 'S',null);
 		maMap.dessinerMap();
 		
-		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(7,2);
+		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(5,8);
+		
 		System.out.println(liste.get(0).toString());
 		System.out.println(liste.get(1).toString());
 		System.out.println(liste.get(2).toString());
@@ -56,6 +52,10 @@ public class testMap {
 		System.out.println("Je cherche le personnage donner en parametre");
 		System.out.println("resultat de ma recherche: " +maMap.chercherPersonnage(a).toString());
 		
+		for (int i = 0; i<10; i++) {
+			maMap.choixDeplacement(a);
+			maMap.dessinerMap();
+		}
 	
 	}
 

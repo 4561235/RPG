@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Map {
 	
@@ -99,7 +99,7 @@ public class Map {
 		ArrayList<coordonnees> liste = new ArrayList<coordonnees>();
 		for(int i=0; i<tailleDuTableau;i++)
 		{
-			if(tableau[i] != null)
+			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
 			{
 				if(tableau[i].getX()==x && tableau[i].getY() - 1 ==y ) //On scanne la case au dessus
 				{
@@ -115,9 +115,10 @@ public class Map {
 				{
 					liste.add(tableau[i]); 
 				}
-				
+				//System.out.println("C'est ca: " +tableau[i]);
 				if(tableau[i].getX() - 1==x && tableau[i].getY()==y ) //On scanne la case a gauche
 				{
+					
 					liste.add(tableau[i]); 
 				}
 			}
@@ -144,29 +145,30 @@ public class Map {
 		coordonnees c = chercherPersonnage(personnage);
 		char lettre = c.getLettre();
 		
-		if (s == "haut")
+		if (s.equals("haut"))
 		{
 			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
 			remplacerSurLaMap(c.getX(), c.getY()-1, lettre, personnage);
 		}
 		
-		if (s == "droite")
+		else if (s.equals("droite"))
 		{
 			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
 			remplacerSurLaMap(c.getX()+1, c.getY(), lettre, personnage);
 		}
 		
-		if (s == "bas")
+		else if (s.equals("bas"))
 		{
 			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
 			remplacerSurLaMap(c.getX(), c.getY()+1, lettre, personnage);
 		}
 		
-		if (s == "gauche")
+		else if (s.equals("gauche"))
 		{
 			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
 			remplacerSurLaMap(c.getX()-1, c.getY(), lettre, personnage);
 		}
+		
 	}
 	
 	public int getLongueur()
@@ -178,6 +180,47 @@ public class Map {
 	{
 		return largeur;
 	}
+	
+	public String input() {
+		Scanner input = new Scanner(System.in);
+		String action = input.next();
+		input.close();
+		return action;
+	}
+	
+	public void choixDeplacement(Personnage p) {
+		
+		int x = this.chercherPersonnage(p).getX();
+		int y = this.chercherPersonnage(p).getY();
+		ArrayList<coordonnees> autour = scannerAutourCoordonnee(x, y);
+		
+		
+		boolean haut   = (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null);
+		boolean gauche = (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null);
+		boolean droite    = (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null);
+		boolean bas = (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null);
+		
+		System.out.println("Vous pouvez aller:");
+		if (haut) System.out.println("haut");
+		if (droite) System.out.println("droite");
+		if (bas) System.out.println("bas");
+		if (gauche) System.out.println("gauche");
+		
+		Scanner input = new Scanner(System.in);
+		String action = input.next();
+		System.out.println(action);
+		
+		while((action.equals("haut") && !(haut)) || (action.equals("bas") && !(bas)) || (action.equals("gauche") && !(gauche)) || (action.equals("droite") && !(droite))
+			|| !(action.equals("haut") || action.equals("bas") || action.equals("gauche") || action.equals("droite")))
+		{
+			System.out.println("veuillez choisir une direction valide");
+			action = input.nextLine();
+		}
+		
+		this.deplacerPersonnage(p, action);
+	}
+	
+	
 	
 
 }
