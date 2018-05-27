@@ -4,7 +4,7 @@ public class testMap {
 
 	public static void main(String[] args) {
 		
-		Map maMap = new Map(10,10);
+		Map maMap = new Map(10,15);
 		System.out.println("longueur de la map:" +maMap.getLongueur());
 		System.out.println("largeur de la map:" +maMap.getLargeur());
 		

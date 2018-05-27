@@ -136,7 +136,7 @@ public class Map {
 			}
 		}
 		
-		return new coordonnees(0,0,'!',null);
+		return new coordonnees(0,0,' ',null);
 	}
 	
 	public void deplacerPersonnage(Personnage personnage, String s)

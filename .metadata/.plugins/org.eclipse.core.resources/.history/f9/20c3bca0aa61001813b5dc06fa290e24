@@ -144,6 +144,16 @@ public class Map {
 		coordonnees c = chercherPersonnage(personnage);
 		char lettre = c.getLettre();
 		
+		ArrayList<coordonnees> liste = scannerAutourCoordonnee(c.getX(),c.getY());
+		
+		for(int i=0; i<liste.size(); i++)
+		{
+			if(liste.get(i).getLettre() !=)
+			{
+				
+			}
+		}
+		
 		if (s == "haut")
 		{
 			remplacerSurLaMap(c.getX(), c.getY(),' ', null);

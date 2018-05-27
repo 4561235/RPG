@@ -136,37 +136,7 @@ public class Map {
 			}
 		}
 		
-		return new coordonnees(0,0,'!',null);
-	}
-	
-	public void deplacerPersonnage(Personnage personnage, String s)
-	{
-		coordonnees c = chercherPersonnage(personnage);
-		char lettre = c.getLettre();
-		
-		if (s == "haut")
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX(), c.getY()-1, lettre, personnage);
-		}
-		
-		if (s == "droite")
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX()+1, c.getY(), lettre, personnage);
-		}
-		
-		if (s == "bas")
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX(), c.getY()+1, lettre, personnage);
-		}
-		
-		if (s == "gauche")
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX()-1, c.getY(), lettre, personnage);
-		}
+		return new coordonnees(0,0,' ',null);
 	}
 	
 	public int getLongueur()

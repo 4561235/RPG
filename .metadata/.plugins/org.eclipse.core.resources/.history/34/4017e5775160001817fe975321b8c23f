@@ -4,7 +4,7 @@ public class testMap {
 
 	public static void main(String[] args) {
 		
-		Map maMap = new Map(10,10);
+		Map maMap = new Map(10,15);
 		System.out.println("longueur de la map:" +maMap.getLongueur());
 		System.out.println("largeur de la map:" +maMap.getLargeur());
 		
@@ -34,20 +34,9 @@ public class testMap {
 		maMap.remplacerSurLaMap(2, 2, 'C',null);
 		maMap.remplacerSurLaMap(1, 2, 'A',null);
 		
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"droite");
-		maMap.deplacerPersonnage(a,"gauche");
-		maMap.deplacerPersonnage(a,"bas");
-
-		
-		
-		
 		maMap.dessinerMap();
 		
-		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(7,2);
+		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(2,2);
 		System.out.println(liste.get(0).toString());
 		System.out.println(liste.get(1).toString());
 		System.out.println(liste.get(2).toString());
