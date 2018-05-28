@@ -10,13 +10,9 @@ public class testMap {
 		
 		for(int x=0;x<10;x++)
 		{
-			maMap.mettreSurLaMap(x, 9, '#');
-		}
-		
-		for(int x=0;x<10;x++)
-		{
 			maMap.mettreSurLaMap(x, 0, '#');
 		}
+		
 		
 		for(int y=1;y<9;y++)
 		{
@@ -26,6 +22,11 @@ public class testMap {
 				maMap.mettreSurLaMap(x, y, ' ');
 			}
 			maMap.mettreSurLaMap(9, y, '#');
+		}
+		
+		for(int x=0;x<10;x++)
+		{
+			maMap.mettreSurLaMap(x, 9, '#');
 		}
 
 		
@@ -52,7 +53,7 @@ public class testMap {
 		System.out.println("Je cherche le personnage donner en parametre");
 		System.out.println("resultat de ma recherche: " +maMap.chercherPersonnage(a).toString());
 		
-		for (int i = 0; i<10; i++) {
+		for (int i = 0; i<100; i++) {
 			maMap.choixDeplacement(a);
 			maMap.dessinerMap();
 		}

@@ -47,6 +47,7 @@ public class Map {
 		
 		//System.out.println(tableau[0].x);
 		//System.out.println("nb" +nbElements);
+		
 	}
 	
 	public void dessinerMap()
@@ -101,6 +102,9 @@ public class Map {
 		{
 			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
 			{
+				
+				//System.out.println("C'est ca: " +tableau[i]);
+				
 				if(tableau[i].getX()==x && tableau[i].getY() - 1 ==y ) //On scanne la case au dessus
 				{
 					liste.add(tableau[i]); //On rajoute l'instance dans la liste
@@ -115,7 +119,7 @@ public class Map {
 				{
 					liste.add(tableau[i]); 
 				}
-				//System.out.println("C'est ca: " +tableau[i]);
+				
 				if(tableau[i].getX() - 1==x && tableau[i].getY()==y ) //On scanne la case a gauche
 				{
 					
