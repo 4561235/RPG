@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="8" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="738" maximized="true" width="1024" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -30,17 +30,22 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="testMap.java" partName="testMap.java" path="/home/mateusz/Projet_Java/RPG/Code/src/testMap.java" title="testMap.java" tooltip="Code/src/testMap.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/testMap.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="993" selectionTopPixel="477"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="901" selectionTopPixel="477"/>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Map.java" partName="Map.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Map.java" title="Map.java" tooltip="Code/src/Map.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Map.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2008" selectionTopPixel="2920"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1917" selectionTopPixel="1211"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Coordonnees.java" partName="Coordonnees.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Coordonnees.java" title="Coordonnees.java" tooltip="Code/src/Coordonnees.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Coordonnees.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="126" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -66,7 +71,7 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -94,13 +99,17 @@
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <perspective_action id="org.eclipse.team.cvs.ui.cvsPerspective"/>
 <perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@31e08c61" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
 <fastViewBar fastViewLocation="1024" id="bottomRight" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
 <fastViews>
 <view id="org.eclipse.ui.views.TaskList" ratio="0.3"/>
@@ -127,20 +136,18 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.1099631" ratioLeft="149" ratioRight="1206" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.23099631" ratioLeft="313" ratioRight="1042" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottomRight" ratio="0.076271184" ratioLeft="45" ratioRight="545" relationship="4" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@31e08c61" ratio="0.07679181" ratioLeft="45" ratioRight="541" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@31e08c61" ratio="0.22525597" ratioLeft="132" ratioRight="454" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="bottomLeft" ratio="0.49919742" ratioLeft="311" ratioRight="312" relationship="4" relative="topLeft">
@@ -161,6 +168,11 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/testMap.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Map.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/testMap.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/coordonnees.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/coordonnees.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Coordonnees.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/testMap.java"/>
 </editors>
 <item historyLabel="testMap.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
@@ -207,8 +219,86 @@
 <item historyLabel="testMap.java" index="0">
 <position info="not_deleted" x="993" y="0"/>
 </item>
-<item active="true" historyLabel="Map.java" index="1">
+<item historyLabel="Map.java" index="1">
 <position info="not_deleted" x="2230" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="993" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="2008" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="coordonnees.java" index="3">
+<position info="not_deleted" x="121" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="2">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="3050" y="18"/>
+</item>
+<item historyLabel="coordonnees.java" index="4">
+<position info="not_deleted" x="2" y="1250"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="1180" y="0"/>
+</item>
+<item historyLabel="coordonnees.java" index="4">
+<position info="not_deleted" x="2" y="1250"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="29" y="1151"/>
+</item>
+<item historyLabel="coordonnees.java" index="4">
+<position info="not_deleted" x="34" y="1213"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="126" y="0"/>
+</item>
+<item historyLabel="coordonnees.java" index="4">
+<position info="not_deleted" x="34" y="1213"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="126" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="3050" y="18"/>
+</item>
+<item historyLabel="testMap.java" index="6">
+<position info="not_deleted" x="886" y="0"/>
+</item>
+<item historyLabel="Map.java" index="1">
+<position info="not_deleted" x="4262" y="0"/>
+</item>
+<item historyLabel="testMap.java" index="6">
+<position info="not_deleted" x="901" y="0"/>
+</item>
+<item active="true" historyLabel="Map.java" index="1">
+<position info="not_deleted" x="4262" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -224,10 +314,17 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
 <trimItem IMemento.internal.id="bottomRight"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@31e08c61"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Coordonnees.java" tooltip="Code/src/Coordonnees.java">
+<persistable path="/Code/src/Coordonnees.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="coordonnees.java" tooltip="Code/src/coordonnees.java">
+<persistable path="/Code/src/coordonnees.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Map.java" tooltip="Code/src/Map.java">
 <persistable path="/Code/src/Map.java"/>
 </file>

@@ -43,7 +43,7 @@ public class testMap {
 		maMap.remplacerSurLaMap(5, 8, 'S',null);
 		maMap.dessinerMap();
 		
-		ArrayList<coordonnees> liste = maMap.scannerAutourCoordonnee(5,8);
+		ArrayList<Coordonnees> liste = maMap.scannerAutourCoordonnee(5,8);
 		
 		System.out.println(liste.get(0).toString());
 		System.out.println(liste.get(1).toString());

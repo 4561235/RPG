@@ -210,7 +210,6 @@ public class Map {
 		if (bas) System.out.println("bas");
 		if (gauche) System.out.println("gauche");
 		
-		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		String action = input.next();
 		System.out.println(action);

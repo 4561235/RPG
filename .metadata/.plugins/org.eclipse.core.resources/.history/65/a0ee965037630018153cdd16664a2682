@@ -6,7 +6,7 @@ public class Map {
 	private int largeur;
 	
 	private int tailleDuTableau = 500;
-	private Coordonnees[] tableau = new Coordonnees[tailleDuTableau];
+	private coordonnees[] tableau = new coordonnees[tailleDuTableau];
 
 	
 	
@@ -38,11 +38,11 @@ public class Map {
 		
 		if(nbElements==0)
 		{
-			this.tableau[nbElements] = new Coordonnees(x,y,lettre,null);
+			this.tableau[nbElements] = new coordonnees(x,y,lettre,null);
 		}
 		else
 		{
-			this.tableau[nbElements + 1] = new Coordonnees(x,y,lettre,null);
+			this.tableau[nbElements + 1] = new coordonnees(x,y,lettre,null);
 		}
 		
 		//System.out.println(tableau[0].x);
@@ -95,9 +95,9 @@ public class Map {
 		}
 	}
 	
-	public ArrayList<Coordonnees> scannerAutourCoordonnee(int x, int y)
+	public ArrayList<coordonnees> scannerAutourCoordonnee(int x, int y)
 	{
-		ArrayList<Coordonnees> liste = new ArrayList<Coordonnees>();
+		ArrayList<coordonnees> liste = new ArrayList<coordonnees>();
 		for(int i=0; i<tailleDuTableau;i++)
 		{
 			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
@@ -131,7 +131,7 @@ public class Map {
 		return liste;
 	}
 	
-	public Coordonnees chercherPersonnage(Personnage personnage) //On va regarder sur la map pour trouver les coordonnees du personnage
+	public coordonnees chercherPersonnage(Personnage personnage) //On va regarder sur la map pour trouver les coordonnees du personnage
 	{
 		for(int i=0; i<tailleDuTableau;i++)
 		{
@@ -141,12 +141,12 @@ public class Map {
 			}
 		}
 		
-		return new Coordonnees(0,0,'!',null);
+		return new coordonnees(0,0,'!',null);
 	}
 	
 	public void deplacerPersonnage(Personnage personnage, String s)
 	{
-		Coordonnees c = chercherPersonnage(personnage);
+		coordonnees c = chercherPersonnage(personnage);
 		char lettre = c.getLettre();
 		
 		if (s.equals("haut"))
@@ -196,7 +196,7 @@ public class Map {
 		
 		int x = this.chercherPersonnage(p).getX();
 		int y = this.chercherPersonnage(p).getY();
-		ArrayList<Coordonnees> autour = scannerAutourCoordonnee(x, y);
+		ArrayList<coordonnees> autour = scannerAutourCoordonnee(x, y);
 		
 		
 		boolean haut   = (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null);
@@ -210,7 +210,6 @@ public class Map {
 		if (bas) System.out.println("bas");
 		if (gauche) System.out.println("gauche");
 		
-		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		String action = input.next();
 		System.out.println(action);
