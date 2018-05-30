@@ -30,11 +30,13 @@ public class testMap {
 		}
 
 		
-		Personnage a = new Personnage();
+		Personnage a = new Personnage("Testorius", 10, 10, true);
+		Personnage v = new Personnage("Viktimus", 10, 10, false);
 		
 		maMap.remplacerSurLaMap(3, 2, 'P',a);
 		maMap.remplacerSurLaMap(2, 2, 'C',null);
 		maMap.remplacerSurLaMap(1, 2, 'A',null);
+		maMap.remplacerSurLaMap(3, 3, 'V', v);
 		
 
 
@@ -54,7 +56,7 @@ public class testMap {
 		System.out.println("resultat de ma recherche: " +maMap.chercherPersonnage(a).toString());
 		
 		for (int i = 0; i<100; i++) {
-			maMap.choixDeplacement(a);
+			maMap.choix(a);
 			maMap.dessinerMap();
 		}
 	
