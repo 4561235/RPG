@@ -10,12 +10,9 @@ public class Map {
 
 	private Scanner input = new Scanner(System.in);
 	
-	public Map()
-	{
-		this.longueur=10;
-		this.largeur=10;
-		
-	}
+
+	
+	public Map(){}
 	
 	public Map(int longueur, int largeur)
 	{
@@ -24,6 +21,22 @@ public class Map {
 		
 	}
 	
+	public int getLongueur()
+	{
+		return longueur;
+	}
+	
+	public int getLargeur()
+	{
+		return largeur;
+	}
+	
+	public Scanner getInput() {
+		return input;
+	}
+
+
+
 	public void mettreSurLaMap(int x, int y, char lettre)
 	{
 		int nbElements = 0;
@@ -144,151 +157,14 @@ public class Map {
 		return new Coordonnees(0,0,'!',null);
 	}
 	
-	public void deplacerPersonnage(Personnage personnage, String s)
-	{
-		Coordonnees c = chercherPersonnage(personnage);
-		char lettre = c.getLettre();
-		
-		if (s.equals("haut"))
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX(), c.getY()-1, lettre, personnage);
-		}
-		
-		else if (s.equals("droite"))
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX()+1, c.getY(), lettre, personnage);
-		}
-		
-		else if (s.equals("bas"))
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX(), c.getY()+1, lettre, personnage);
-		}
-		
-		else if (s.equals("gauche"))
-		{
-			remplacerSurLaMap(c.getX(), c.getY(),' ', null);
-			remplacerSurLaMap(c.getX()-1, c.getY(), lettre, personnage);
-		}
-		
-	}
+
 	
-	public int getLongueur()
-	{
-		return longueur;
-	}
 	
-	public int getLargeur()
-	{
-		return largeur;
-	}
 	
-	public String input() {
-		String action = input.next();
-		input.close();
-		return action;
-	}
 	
-	public void choix(Personnage p) {
-		ArrayList<Coordonnees> autour = scannerAutourCoordonnee(this.chercherPersonnage(p).getX(), this.chercherPersonnage(p).getY());
-		
-		boolean deplacer =  (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null) ||
-			                (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
-			                (autour.get(2).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
-			                (autour.get(3).getLettre() == ' ' && autour.get(1).getPersonnage()==null); 
-		
-		boolean attaquer =  autour.get(0).getPersonnage()!=null ||
-							autour.get(1).getPersonnage()!=null ||
-							autour.get(2).getPersonnage()!=null ||
-							autour.get(3).getPersonnage()!=null;
-		
-		System.out.println("vous pouvez:");
-		if (deplacer) {System.out.println("deplacer");}
-		if (attaquer) {System.out.println("attaquer");}
-		
-		String choix = input.next();
-		while (!(choix.equals("deplacer") || choix.equals("attaquer"))) {
-			System.out.println("choisissez un choix valide");
-			choix = input.next();
-		}
-		
-		if (choix.equals("deplacer")) {this.choixDeplacement(p, autour);}
-		else if (choix.equals("attaquer")) {this.choixAttaquer(p, autour);}
-		
-	}
 	
-	public void choixDeplacement(Personnage p, ArrayList<Coordonnees> autour) {
-		
-		
-		boolean haut   = (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null);
-		boolean gauche = (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null);
-		boolean droite    = (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null);
-		boolean bas = (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null);
-		
-		System.out.println("Vous pouvez aller:");
-		if (haut) System.out.println("haut");
-		if (droite) System.out.println("droite");
-		if (bas) System.out.println("bas");
-		if (gauche) System.out.println("gauche");
-		
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-		String action = input.next();
-		
-		while((action.equals("haut") && !(haut)) || (action.equals("bas") && !(bas)) || (action.equals("gauche") && !(gauche)) || (action.equals("droite") && !(droite))
-			|| !(action.equals("haut") || action.equals("bas") || action.equals("gauche") || action.equals("droite")))
-		{
-			System.out.println("veuillez choisir une direction valide");
-			action = input.nextLine();
-		}
-		
-		this.deplacerPersonnage(p, action);
-	}
 	
-	public void attaquer(Personnage attaquant, Personnage defenseur) {
-		int dmg =(int) (Math.random()*3+3);
-		System.out.println(dmg+"\npv avant: "+defenseur.getHp());
-		defenseur.setHp(defenseur.getHp()-dmg);
-		System.out.println("pv après" + defenseur.getHp());
-		this.mort(defenseur);
-	}
 	
-	public void mort(Personnage p){
-		if (p.getHp()<=0) {this.remplacerSurLaMap(this.chercherPersonnage(p).getX(), this.chercherPersonnage(p).getY(), ' ', null);}
-	}
-	
-	public void choixAttaquer(Personnage p, ArrayList<Coordonnees> autour) {
-		
-		boolean haut   = (autour.get(0).getPersonnage()!=null);
-		boolean gauche = (autour.get(1).getPersonnage()!=null);
-		boolean droite    = (autour.get(2).getPersonnage()!=null);
-		boolean bas = (autour.get(3).getPersonnage()!=null);
-		
-		System.out.println("Vous pouvvez attaquer:");
-		if (haut) {System.out.println("haut: " + autour.get(0).getPersonnage().getNom());}
-		if (gauche) {System.out.println("gauche: " + autour.get(1).getPersonnage().getNom());}
-		if (droite) {System.out.println("droite: " + autour.get(2).getPersonnage().getNom());}
-		if (bas) {System.out.println("bas: " + autour.get(3).getPersonnage().getNom());}
-		
-		String action = input.next();
-		while  ((action.equals("haut") && !(haut)) ||
-				(action.equals("bas") && !(bas)) ||
-				(action.equals("gauche") && !(gauche)) ||
-				(action.equals("droite") && !(droite)) ||
-				!(action.equals("haut") || action.equals("bas") || action.equals("gauche") || action.equals("droite"))) {
-			
-			System.out.println("Veuillez choisir une cible valide");
-			action = input.next();
-		}
-		
-			 if (action.equals("haut"))   {this.attaquer(p, autour.get(0).getPersonnage());}
-		else if (action.equals("gauche")) {this.attaquer(p, autour.get(1).getPersonnage());}
-		else if (action.equals("droite")) {this.attaquer(p, autour.get(2).getPersonnage());}
-		else if (action.equals("bas"))    {this.attaquer(p, autour.get(3).getPersonnage());}
-		
-	}
 	
 	
 
