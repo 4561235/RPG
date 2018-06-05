@@ -35,7 +35,16 @@ public class Map {
 		return input;
 	}
 
-
+	
+	public ArrayList<Personnage> getPersonnages(){
+		ArrayList<Personnage> liste = new ArrayList<Personnage>();
+		for (int i =0; i<this.tailleDuTableau; i++) {
+			if (this.tableau[i] != null && this.tableau[i].getPersonnage()!=null) {
+				liste.add(tableau[i].getPersonnage());
+			}
+		}
+		return liste;
+	}
 
 	public void mettreSurLaMap(int x, int y, char lettre)
 	{
@@ -156,16 +165,6 @@ public class Map {
 		
 		return new Coordonnees(0,0,'!',null);
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

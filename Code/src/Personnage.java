@@ -79,6 +79,14 @@ public class Personnage {
 	public void setPamax(int pamax) {
 		this.pamax = pamax;
 	}
+
+	public boolean isJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(boolean joueur) {
+		this.joueur = joueur;
+	}
 	
 	
 

@@ -7,6 +7,8 @@ public class TestJeu {
 		
 		Jeu jeu = new Jeu(10, 10); //creation d'un objet Jeu avec une carte de 10 par 10
 		
+		
+		
 		System.out.println("longueur de la map:" + jeu.getCarte().getLongueur());
 		System.out.println("largeur de la map:" + jeu.getCarte().getLargeur());
 		
@@ -37,12 +39,14 @@ public class TestJeu {
 		
 		Personnage a = new Personnage("Testorius", 10, 10, true);
 		Personnage v = new Personnage("Viktimus", 10, 10, false);
+		Personnage e = new Personnage("Ennemius", 10, 10, true);
 		
 		jeu.getCarte().remplacerSurLaMap(3, 2, 'P',a);
 		jeu.getCarte().remplacerSurLaMap(2, 2, 'C',null);
 		jeu.getCarte().remplacerSurLaMap(1, 2, 'A',null);
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
 		jeu.getCarte().remplacerSurLaMap(5, 8, 'S',null);
+		jeu.getCarte().remplacerSurLaMap(3, 4, 'E', e);
 	
 		jeu.getCarte().dessinerMap();
 		
@@ -59,8 +63,8 @@ public class TestJeu {
 		//test du système de choix
 		
 		for (int i = 0; i<100; i++) {
-			jeu.choix(a);
-			jeu.getCarte().dessinerMap();
+			jeu.partie();
+			System.out.println("i");
 		}
 	}
 

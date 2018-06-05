@@ -11,6 +11,8 @@ public class Jeu {
 	private Deplacement deplacement;
 	private Combat combat;
 	
+	private ArrayList<Personnage> participants;
+	
 	//constructeurs
 	
 	public Jeu() {
@@ -43,28 +45,53 @@ public class Jeu {
 		
 		boolean deplacer =  (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null) ||
 			                (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
-			                (autour.get(2).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
-			                (autour.get(3).getLettre() == ' ' && autour.get(1).getPersonnage()==null); 
+			                (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null) ||
+			                (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null); 
 		
 		boolean attaquer =  autour.get(0).getPersonnage()!=null ||
 							autour.get(1).getPersonnage()!=null ||
 							autour.get(2).getPersonnage()!=null ||
 							autour.get(3).getPersonnage()!=null;
 		
+		System.out.println("Au tour de " + p.getNom() +" !");
+		
 		System.out.println("vous pouvez:");
 		if (deplacer) {System.out.println("deplacer");}
 		if (attaquer) {System.out.println("attaquer");}
 		
+		System.out.println("rien");
+		
 		String choix = input.next();
-		while (!(choix.equals("deplacer") || choix.equals("attaquer"))) {
+		while (!(choix.equals("deplacer") || choix.equals("attaquer") || choix.equals("rien") )) {
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
 		}
 		
 		if (choix.equals("deplacer")) {this.deplacement.choixDeplacement(p, autour);}
 		else if (choix.equals("attaquer")) {this.combat.choixAttaquer(p, autour);}
+		else {this.getCarte().dessinerMap();}
 		
 	}
 	
+	public void partie() {
+		this.participants=this.carte.getPersonnages();
+		System.out.println("liste" + participants);
+		boolean enVie = true;
+		while (enVie) {
+			enVie=false;
+			for (Personnage c:this.participants) {
+				if (c.getHp()>0) {
+					if (c.isJoueur()) {
+						this.choix(c);
+						enVie=true;
+					}
+					this.carte.dessinerMap();
+				}
+			}
+			System.out.println("nouveau tour");
+			
+		}
+		this.carte.getPersonnages();
+	}
 	
 }
