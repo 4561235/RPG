@@ -20,7 +20,7 @@ public class Combat{
 		int dmg =(int) (Math.random()*3+3);
 		System.out.println(dmg+"\npv avant: "+defenseur.getHp());
 		defenseur.setHp(defenseur.getHp()-dmg);
-		System.out.println("pv après" + defenseur.getHp());
+		System.out.println("pv apres" + defenseur.getHp());
 		this.mort(defenseur);
 	}
 	
@@ -42,28 +42,28 @@ public class Combat{
 		boolean bas = (autour.get(3).getPersonnage()!=null);
 		
 		System.out.println("Vous pouvvez attaquer:");
-		if (haut) {System.out.println("haut: " + autour.get(0).getPersonnage().getNom());}
-		if (gauche) {System.out.println("gauche: " + autour.get(1).getPersonnage().getNom());}
-		if (droite) {System.out.println("droite: " + autour.get(2).getPersonnage().getNom());}
-		if (bas) {System.out.println("bas: " + autour.get(3).getPersonnage().getNom());}
+		if (haut) {System.out.println("h: haut --> " + autour.get(0).getPersonnage().getNom());}
+		if (gauche) {System.out.println("g: gauche --> " + autour.get(1).getPersonnage().getNom());}
+		if (droite) {System.out.println("d: droite --> " + autour.get(2).getPersonnage().getNom());}
+		if (bas) {System.out.println("b: bas --> " + autour.get(3).getPersonnage().getNom());}
 		
 		//tant que la cible n'est pas valide
 		
 		String action = this.carte.getInput().next();
-		while  ((action.equals("haut") && !(haut)) ||
-				(action.equals("bas") && !(bas)) ||
-				(action.equals("gauche") && !(gauche)) ||
-				(action.equals("droite") && !(droite)) ||
-				!(action.equals("haut") || action.equals("bas") || action.equals("gauche") || action.equals("droite"))) {
+		while  ((action.equals("h") && !(haut)) ||
+				(action.equals("b") && !(bas)) ||
+				(action.equals("g") && !(gauche)) ||
+				(action.equals("d") && !(droite)) ||
+				!(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d"))) {
 			
 			System.out.println("Veuillez choisir une cible valide");
 			action = this.carte.getInput().next();
 		}
 		
-			 if (action.equals("haut"))   {this.attaquer(p, autour.get(0).getPersonnage());}
-		else if (action.equals("gauche")) {this.attaquer(p, autour.get(1).getPersonnage());}
-		else if (action.equals("droite")) {this.attaquer(p, autour.get(2).getPersonnage());}
-		else if (action.equals("bas"))    {this.attaquer(p, autour.get(3).getPersonnage());}
+			 if (action.equals("h"))   {this.attaquer(p, autour.get(0).getPersonnage());}
+		else if (action.equals("g")) {this.attaquer(p, autour.get(1).getPersonnage());}
+		else if (action.equals("d")) {this.attaquer(p, autour.get(2).getPersonnage());}
+		else if (action.equals("b"))    {this.attaquer(p, autour.get(3).getPersonnage());}
 		
 	}
 }

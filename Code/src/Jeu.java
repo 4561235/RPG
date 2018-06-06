@@ -56,19 +56,19 @@ public class Jeu {
 		System.out.println("Au tour de " + p.getNom() +" !");
 		
 		System.out.println("vous pouvez:");
-		if (deplacer) {System.out.println("deplacer");}
-		if (attaquer) {System.out.println("attaquer");}
+		if (deplacer) {System.out.println("d: deplacer");}
+		if (attaquer) {System.out.println("a: attaquer");}
 		
-		System.out.println("rien");
+		System.out.println("r: rien");
 		
 		String choix = input.next();
-		while (!(choix.equals("deplacer") || choix.equals("attaquer") || choix.equals("rien") )) {
+		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") )) {
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
 		}
 		
-		if (choix.equals("deplacer")) {this.deplacement.choixDeplacement(p, autour);}
-		else if (choix.equals("attaquer")) {this.combat.choixAttaquer(p, autour);}
+		if (choix.equals("d")) {this.deplacement.choixDeplacement(p, autour);}
+		else if (choix.equals("a")) {this.combat.choixAttaquer(p, autour);}
 		else {this.getCarte().dessinerMap();}
 		
 	}

@@ -1,0 +1,6 @@
+
+public class Objets {
+	
+	public final static String[] objets = {"rouge","bleu","vert"};
+	
+}

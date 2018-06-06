@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Personnage {
 	
@@ -7,6 +8,8 @@ public class Personnage {
 	private int pa;
 	private int pamax;
 	private boolean joueur;
+	
+	private ArrayList<Objet> listeObjet = new ArrayList<Objet>();
 	
 	public Personnage()
 	{
@@ -38,6 +41,11 @@ public class Personnage {
 		this.pa = pamax;
 		this.pamax = pamax;
 		this.joueur=joueur;
+	}
+	
+	public void ajouterObjet(Objet o)
+	{
+		this.listeObjet.add(o);
 	}
 
 	public String getNom() {
