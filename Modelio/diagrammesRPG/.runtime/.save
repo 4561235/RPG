@@ -1,6 +1,7 @@
-#Fri May 11 19:49:30 CEST 2018
+#Fri Jun 08 10:03:25 CEST 2018
 org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/Mateusz/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.app.ui.model.perspective.parentId=org.modelio.app.bottom.parts
 org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/Mateusz/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.diagram.perspective.parentId=app.ui.ext_com.partstack.right
 org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/Mateusz/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.development.perspective.parentId=app.ui.ext_com.partstack.bottom
+org.modelio.diagram.editor.OpenedDiagrams1='Package Use Case diagram' {c004d9ee-c28d-486a-b2b1-c4084d7121c6} Standard.UseCaseDiagram
 org.modelio.diagram.editor.OpenedDiagrams0='diagrammesrpg Class diagram' {d370a319-9e30-4ac7-aab9-da1526b03578} Standard.ClassDiagram
 org.modelio.module.propertytab.JavaDesigner\ v3.7.01\ GModule\ @file\:///C\:/Users/Mateusz/.modelio/3.7/modules/JavaDesigner_3.7.01/JavaDesigner_3.7.01.jmdac\ runtime\ module_.org.modelio.full.perspective.parentId=app.ui.ext_com.partstack.bottom

@@ -39,12 +39,17 @@ public class Objet {
 		//Effet de la potion
 		if(this.nom.equals("potion"))
 		{
-			p.setHp(p.getHp() + 20);
-			
-			if(p.getHpmax()<=p.getHp());
-			{
-				p.setHp(p.getHpmax());
-			}
+			activerPotion(p);
+		}
+	}
+	
+	public void activerPotion(Personnage p)
+	{
+		p.setHp(p.getHp() + 4);
+		
+		if(p.getHpmax()<=p.getHp());
+		{
+			p.setHp(p.getHpmax());
 		}
 	}
 	

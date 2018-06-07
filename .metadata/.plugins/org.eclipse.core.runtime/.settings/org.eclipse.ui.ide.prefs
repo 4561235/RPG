@@ -1,10 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=Updated upstream
+>>>>>>>=Stashed changes
 PROBLEMS_FILTERS_MIGRATE=true
 TASKS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
-<<<<<<< Updated upstream
-platformState=1527432430502
-=======
-platformState=1525965624747
->>>>>>> Stashed changes
+platformState=1520237325985
 quickStart=false
 tipsAndTricks=true

@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagrammeDeCasUtilisationRpg" version="4">
+  <OBJECT>
+    <ID name="diagrammeDeCasUtilisationRpg" mc="Standard.Package" uid="e28f4be0-5e2f-432e-b978-ab03187fbc79"/>
+    <PID name="diagrammesRPG" mc="Standard.Project" uid="451cd675-dba1-4ac1-a59c-03cd65b4f82d"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[diagrammeDeCasUtilisationRpg]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Joueur" mc="Standard.Actor" uid="df9fa0a3-e7fb-4eec-9540-7559f6a68e64"/>
+        <COMPID name="Creer un personnage" mc="Standard.UseCase" uid="4e85df1d-9883-4f34-aa40-a8328eb20a1b"/>
+        <COMPID name="Ce deplacer" mc="Standard.UseCase" uid="3b13d30f-e423-4096-bbaa-7d7b69f94a72"/>
+        <COMPID name="Attaquer les autres personnages et les ennemies" mc="Standard.UseCase" uid="78b7b570-8714-496c-8e86-10ef037e14c3"/>
+        <COMPID name="Utiliser des objets" mc="Standard.UseCase" uid="0a76186b-92f7-4ae5-bdeb-88b36e451e89"/>
+        <COMPID name="Utiliser des competences" mc="Standard.UseCase" uid="2b6fedb4-cf76-4633-9d99-6d10d7d2bba7"/>
+        <COMPID name="Ramasser les objets" mc="Standard.UseCase" uid="41d2ba96-cde1-4672-816f-c7cdd1de6b4b"/>
+        <COMPID name="Choisir le metier du personnage" mc="Standard.UseCase" uid="916fd343-54e7-494d-b2db-05f2be5dbbcd"/>
+        <COMPID name="Sauvegarder" mc="Standard.UseCase" uid="d0dbf7d7-0674-4395-8646-2caf8aee5d4d"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Package Use Case diagram" mc="Standard.UseCaseDiagram" uid="c004d9ee-c28d-486a-b2b1-c4084d7121c6"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

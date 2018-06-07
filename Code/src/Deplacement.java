@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Deplacement{
 	
 	
-	private Map carte; //l'attirbut Carte est le même que celui de Jeu et Combat
+	private Map carte; //l'attirbut Carte est le mï¿½me que celui de Jeu et Combat
 	
 	//Contructeurs
 	
@@ -15,7 +15,7 @@ public class Deplacement{
 		this.carte = (m);
 	}
 	
-	//déplacement d'un personnage d'une case vers une des cases adjacente
+	//dï¿½placement d'un personnage d'une case vers une des cases adjacente
 	public void deplacerPersonnage(Personnage personnage, String s)
 	{
 		Coordonnees c = this.carte.chercherPersonnage(personnage);
@@ -47,7 +47,7 @@ public class Deplacement{
 		
 	}
 	
-	//choix de la direction du déplacement
+	//choix de la direction du dï¿½placement
 	public void choixDeplacement(Personnage p, ArrayList<Coordonnees> autour) {
 		
 		//Verification des directions disponibles
@@ -62,7 +62,7 @@ public class Deplacement{
 		if (haut) System.out.println("h: haut");
 		if (droite) System.out.println("d: droite");
 		if (bas) System.out.println("b: bas");
-		if (gauche) System.out.println("b: gauche");
+		if (gauche) System.out.println("g: gauche");
 		
 		@SuppressWarnings("resource")
 		String action = this.carte.getInput().next();

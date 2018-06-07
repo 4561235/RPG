@@ -10,7 +10,8 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="Model">
-        <COMPID name="diagrammesrpg" mc="Standard.Package" uid="725102be-078a-455e-aa5b-f9d22a86d47a"/>
+        <COMPID name="diagrammesDeClasseRpg" mc="Standard.Package" uid="725102be-078a-455e-aa5b-f9d22a86d47a"/>
+        <COMPID name="diagrammeDeCasUtilisationRpg" mc="Standard.Package" uid="e28f4be0-5e2f-432e-b978-ab03187fbc79"/>
       </COMP>
       <COMP relation="DiagramRoot">
         <COMPID name="diagrammesRPG" mc="Infrastructure.DiagramSet" uid="980892e5-4660-4f58-abf0-5b4d26bf1b1c"/>

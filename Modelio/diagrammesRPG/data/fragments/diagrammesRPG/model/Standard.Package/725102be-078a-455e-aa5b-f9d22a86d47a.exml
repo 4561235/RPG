@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagrammesrpg" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagrammesDeClasseRpg" version="4">
   <OBJECT>
-    <ID name="diagrammesrpg" mc="Standard.Package" uid="725102be-078a-455e-aa5b-f9d22a86d47a"/>
+    <ID name="diagrammesDeClasseRpg" mc="Standard.Package" uid="725102be-078a-455e-aa5b-f9d22a86d47a"/>
     <PID name="diagrammesRPG" mc="Standard.Project" uid="451cd675-dba1-4ac1-a59c-03cd65b4f82d"/>
     <ATTRIBUTES>
       <ATT name="IsInstantiable">false</ATT>
@@ -9,13 +9,18 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[diagrammesrpg]]></ATT>
+      <ATT name="Name"><![CDATA[diagrammesDeClasseRpg]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedElement">
         <COMPID name="Map" mc="Standard.Class" uid="81575778-48a3-4466-bd75-1f057f1f10b4"/>
         <COMPID name="Coordonnees" mc="Standard.Class" uid="7ca1d20b-f6cd-46ce-95f6-7fa1fe5baaa5"/>
+        <COMPID name="Combat" mc="Standard.Class" uid="f6baaa49-a4b0-406f-a77d-6eab716f36e8"/>
+        <COMPID name="Personnage" mc="Standard.Class" uid="d6fc3d59-33c2-4aaa-94d4-32e384ff09a4"/>
+        <COMPID name="Deplacement" mc="Standard.Class" uid="322017a2-473b-4a21-a90c-eeb4100647c0"/>
+        <COMPID name="Jeu" mc="Standard.Class" uid="e87d2e43-7c91-4ee5-be09-805a4caf0b3a"/>
+        <COMPID name="Objet" mc="Standard.Class" uid="24fb8294-aca9-46a0-b9c6-62c92318c689"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="diagrammesrpg Class diagram" mc="Standard.ClassDiagram" uid="d370a319-9e30-4ac7-aab9-da1526b03578"/>
