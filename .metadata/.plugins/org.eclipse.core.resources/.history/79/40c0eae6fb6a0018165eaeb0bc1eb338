@@ -67,36 +67,16 @@ public class Personnage {
 		{
 			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
 		}
+		String action = this.input.next();
+		int nombreChoix = Integer.parseInt(action);
 		
-		String action = this.input.next(); 
-		int nombreChoix;
-		
-		try
+		while (!(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()))
 		{
-			nombreChoix = Integer.parseInt(action);
-		}
-		catch(Exception e)
-		{
-			nombreChoix = -1;
-		}
-		
-		while(!(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)) 
-		{
-			action = this.input.next();
-			
-			try
-			{
-				nombreChoix = Integer.parseInt(action);
-			}
-			catch(Exception e)
-			{
-				nombreChoix = -1;
-			}
-			
-			
 			System.out.println("Veuillez choisir une cible valide");
 			
-		} 
+			action = this.input.next();
+			nombreChoix = Integer.parseInt(action);
+		}
 		
 		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size())
 		{

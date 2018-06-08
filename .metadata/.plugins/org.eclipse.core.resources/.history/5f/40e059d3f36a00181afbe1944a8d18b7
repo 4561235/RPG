@@ -52,8 +52,6 @@ public class Objet {
 			p.setHp(p.getHpmax());
 		}
 	}
-
-	
 	
 	public String getNom()
 	{

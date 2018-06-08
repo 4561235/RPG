@@ -82,19 +82,7 @@ public class Jeu {
 			for (Personnage c:this.participants) {
 				if (c.getHp()>0) {
 					if (c.isJoueur()) {
-						
-						//pour tester les objets
-						/*Objet potion1 = new Objet("potion");
-						Objet potion2 = new Objet("potion");
-						Objet potion3 = new Objet("potion");
-						Objet potion4 = new Objet("potion");
-						//System.out.println(potion.getNom());
-						c.ajouterObjet(potion1);
-						c.ajouterObjet(potion2);
-						c.ajouterObjet(potion3);
-						c.ajouterObjet(potion4);
-						c.choixObjet();*/
-						
+						Objet potion = new Objet("Potion");
 						this.choix(c);
 						enVie=true;
 					}

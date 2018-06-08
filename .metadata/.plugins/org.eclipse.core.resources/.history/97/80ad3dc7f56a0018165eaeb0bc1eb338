@@ -52,8 +52,11 @@ public class Objet {
 			p.setHp(p.getHpmax());
 		}
 	}
-
 	
+	public void enleverObjetDeInventaire(String s, Personnage p)
+	{
+		
+	}
 	
 	public String getNom()
 	{
