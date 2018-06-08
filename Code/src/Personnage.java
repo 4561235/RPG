@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Personnage {
 	
@@ -10,6 +11,7 @@ public class Personnage {
 	private boolean joueur;
 	
 	private ArrayList<Objet> listeObjet = new ArrayList<Objet>();
+	private Scanner input = new Scanner(System.in);
 	
 	public Personnage()
 	{
@@ -46,6 +48,67 @@ public class Personnage {
 	public void ajouterObjet(Objet o)
 	{
 		this.listeObjet.add(o);
+	}
+	
+	public void enleverObjet(Objet o)
+	{
+		for(int i = 0; i < this.listeObjet.size();i++)
+		{
+			if(o.getNom().equals(this.listeObjet.get(i).getNom()))
+			{
+				this.listeObjet.remove(i);
+			}
+		}
+	}
+	
+	public void choixObjet()
+	{
+		for(int i = 0; i < this.listeObjet.size();i++)
+		{
+			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
+		}
+		
+		String action = this.input.next(); 
+		int nombreChoix;
+		
+		try
+		{
+			nombreChoix = Integer.parseInt(action);
+		}
+		catch(Exception e)
+		{
+			nombreChoix = -1;
+		}
+		
+		while(!(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)) 
+		{
+			
+			try
+			{
+				nombreChoix = Integer.parseInt(action);
+				if( nombreChoix <= this.listeObjet.size()-1)
+				{
+					break;
+				}
+			}
+			catch(Exception e)
+			{
+				nombreChoix = -1;
+			}
+			
+			System.out.println("Veuillez choisir un objet valide");
+			action = this.input.next();
+			
+		} 
+		
+		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)
+		{
+			this.listeObjet.get(nombreChoix).activerObjet(this);
+			this.enleverObjet(listeObjet.get(nombreChoix));
+			
+		}
+		
+		
 	}
 
 	public String getNom() {
@@ -95,6 +158,7 @@ public class Personnage {
 	public void setJoueur(boolean joueur) {
 		this.joueur = joueur;
 	}
+	
 	
 	
 

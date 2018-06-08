@@ -38,7 +38,7 @@ public class Jeu {
 		this.carte=m;
 	}
 
-	//La méthode principale donnant à l'utilisateur le choix de l'action à effectuer selon ce qui est disponible 
+	//La mï¿½thode principale donnant ï¿½ l'utilisateur le choix de l'action ï¿½ effectuer selon ce qui est disponible 
 	
 	public void choix(Personnage p) {
 		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
@@ -82,6 +82,22 @@ public class Jeu {
 			for (Personnage c:this.participants) {
 				if (c.getHp()>0) {
 					if (c.isJoueur()) {
+						
+						//pour tester les objets
+						/*Objet potion1 = new Objet("potion");
+						Objet potion2 = new Objet("potion");
+						Objet potion3 = new Objet("potion");
+						Objet potion4 = new Objet("potion");
+						//System.out.println(potion.getNom());
+						c.ajouterObjet(potion1);
+						c.ajouterObjet(potion2);
+						c.ajouterObjet(potion3);
+						c.ajouterObjet(potion4);
+						c.setHp(1);
+						System.out.println("Hp: " +c.getHp());
+						c.choixObjet();
+						System.out.println("Hp apres choix: " +c.getHp());
+						*/
 						this.choix(c);
 						enVie=true;
 					}

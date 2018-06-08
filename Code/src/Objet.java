@@ -47,11 +47,16 @@ public class Objet {
 	{
 		p.setHp(p.getHp() + 4);
 		
-		if(p.getHpmax()<=p.getHp());
+		int hpmax = p.getHpmax();
+		int hp =  p.getHp();
+		
+		if(hpmax < hp)
 		{
 			p.setHp(p.getHpmax());
 		}
 	}
+
+	
 	
 	public String getNom()
 	{
