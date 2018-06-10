@@ -142,11 +142,11 @@ public class Jeu {
 				System.out.println("i  = " + i + " et j = " + j);
 				System.out.println(this.carte.getTableau().length);
 				System.out.println(this.carte.getTableau());
-				System.out.println(this.carte.getTableau() [i*this.carte.getLongueur()+j] .getLettre());
+				System.out.println(this.carte.getTableau() [i*this.carte.getLongueur()+j] );
 				
 				metrique[i*this.carte.getLargeur()+j]=99;
 				chemin[i*this.carte.getLargeur()+j]=new Coordonnees(i, j, ' ',null);
-				if (this.carte.getTableau() [i*this.carte.getLargeur()+j] .getLettre() =='#') {
+				if (this.carte.getTableau() [i*this.carte.getLargeur()+j] != null && this.carte.getTableau() [i*this.carte.getLargeur()+j] .getLettre() =='#') {
 					verifier[i*this.carte.getLargeur()+j]=true;
 				}
 			}
@@ -170,10 +170,17 @@ public class Jeu {
 			//pour les 4 cases autour, on calcul la metrique
 			for (Coordonnees c: autour) {
 				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case à coté, on la remplace
-				if ( metrique [iActuel]+1 < metrique [(c.getX()*10+c.getY())] && c.getPersonnage().equals(null) && c.getLettre()==' ' && verifier[iActuel]==false ) {
-					metrique [(c.getX()*10+c.getY())]=metrique [iActuel]+1;
-					chemin[(c.getX()*10+c.getY())].setX(chemin[iActuel].getX());
-					chemin[(c.getX()*10+c.getY())].setY(chemin[iActuel].getY());
+				if (c!=null) {
+					if (metrique [iActuel]+1 < metrique [(c.getX()*10+c.getY())]) {
+						if(c.getPersonnage().equals(null)) {
+							if (c.getLettre()==' ' && verifier[iActuel]==false ) {
+								metrique [(c.getX()*10+c.getY())]=metrique [iActuel]+1;
+								chemin[(c.getX()*10+c.getY())].setX(chemin[iActuel].getX());
+								chemin[(c.getX()*10+c.getY())].setY(chemin[iActuel].getY());
+						}
+					}
+				}
+
 				}
 			}
 			
