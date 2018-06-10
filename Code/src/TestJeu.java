@@ -62,10 +62,9 @@ public class TestJeu {
 		
 		//test du système de choix
 		
-		for (int i = 0; i<100; i++) {
-			jeu.partie();
-			System.out.println("i");
-		}
+		
+		jeu.partie();
+		
 	}
 
 }

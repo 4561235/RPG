@@ -14,6 +14,13 @@ public class Coordonnees {
 		this.personnage=personnage;
 	}
 	
+	public Coordonnees(Coordonnees c) {
+		this.x=c.x;
+		this.y=c.y;
+		this.lettre=c.lettre;
+		this.personnage=new Personnage(c.personnage);
+	}
+
 	public int getX()
 	{
 		return this.x;

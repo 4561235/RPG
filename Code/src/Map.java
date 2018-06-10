@@ -21,6 +21,15 @@ public class Map {
 		
 	}
 	
+	public Map(Map m) {
+		this.longueur=m.longueur;
+		this.largeur=m.largeur;
+		this.tableau=new Coordonnees[m.tailleDuTableau];
+		for (int i = 0; i<m.longueur*m.largeur; i++) {
+			this.tableau[i]= new Coordonnees (m.tableau[i]);
+		}
+	}
+	
 	public int getLongueur()
 	{
 		return longueur;
@@ -35,7 +44,18 @@ public class Map {
 		return input;
 	}
 
+	public Coordonnees getCoordonnees(int i) {
+		return this.tableau[i];
+	}
 	
+	public Coordonnees[] getTableau() {
+		return tableau;
+	}
+
+	public void setTableau(Coordonnees[] tableau) {
+		this.tableau = tableau;
+	}
+
 	public ArrayList<Personnage> getPersonnages(){
 		ArrayList<Personnage> liste = new ArrayList<Personnage>();
 		for (int i =0; i<this.tailleDuTableau; i++) {
