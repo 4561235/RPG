@@ -93,11 +93,8 @@ public class Jeu {
 						c.ajouterObjet(potion2);
 						c.ajouterObjet(potion3);
 						c.ajouterObjet(potion4);
-						c.setHp(1);
-						System.out.println("Hp: " +c.getHp());
-						c.choixObjet();
-						System.out.println("Hp apres choix: " +c.getHp());
-						*/
+						c.choixObjet();*/
+						
 						this.choix(c);
 						enVie=true;
 					}
