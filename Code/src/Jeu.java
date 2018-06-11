@@ -53,22 +53,34 @@ public class Jeu {
 							autour.get(2).getPersonnage()!=null ||
 							autour.get(3).getPersonnage()!=null;
 		
+		//Pour voir si il y a des objets a l'endroit du personnage
+		/*Coordonnees c = this.carte.chercherPersonnage(p);
+		boolean rammasserObjets = true;
+		
+		if(c.getListeObjet() == null)
+		{
+			rammasserObjets = false; //si on detecte pas d'objets sur la carte, on ne peut pas rammasser
+		}
+		*/
+		//
 		System.out.println("Au tour de " + p.getNom() +" !");
 		
 		System.out.println("vous pouvez:");
 		if (deplacer) {System.out.println("d: deplacer");}
 		if (attaquer) {System.out.println("a: attaquer");}
-		
+		//if (rammasserObjets) {System.out.println("ram: rammasser objets");} //A DECOMENTER APRES QUE LA METHODE enelverObjet va etre prete
 		System.out.println("r: rien");
 		
 		String choix = input.next();
-		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") )) {
+		while (!(choix.equals("d") || choix.equals("a") || choix.equals("ram") || choix.equals("r") )) {
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
 		}
 		
+		//Les effets des choix
 		if (choix.equals("d")) {this.deplacement.choixDeplacement(p, autour);}
 		else if (choix.equals("a")) {this.combat.choixAttaquer(p, autour);}
+		//else if (choix.equals("ram")) //A DECOMENTER APRES QUE LA METHODE enelverObjet va etre prete
 		else {this.getCarte().dessinerMap();}
 		
 	}
@@ -76,7 +88,7 @@ public class Jeu {
 	public void partie() {
 		this.participants=this.carte.getPersonnages();
 		System.out.println("liste" + participants);
-		boolean enVie = false;///////////////////////////////////////////////A REMETTRE A TRUE
+		boolean enVie = true;///////////////////////////////////////////////A REMETTRE A TRUE
 		while (enVie) {
 			enVie=false;
 			for (Personnage c:this.participants) {
@@ -113,15 +125,13 @@ public class Jeu {
 		
 		
 		
-		this.pathfindig(this.participants.get(0));
+		//this.pathfindig(this.participants.get(0));
 		
-		
-		
-		
-		
-		
-		
-		
+	}
+	
+	public void rammasserObjets(Coordonnees c)
+	{
+		// TO DO
 	}
 	
 	private Coordonnees[] pathfindig(Personnage p) {
@@ -132,7 +142,7 @@ public class Jeu {
 		// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
 		Coordonnees[] chemin=new Coordonnees[this.carte.getLongueur()*this.carte.getLargeur()];	
 		
-		//tableau de bool permet de savoir si une case à déja été vérifier ou non. Si non, on applique l'algorithme
+		//tableau de bool permet de savoir si une case ï¿½ dï¿½ja ï¿½tï¿½ vï¿½rifier ou non. Si non, on applique l'algorithme
 		boolean[] verifier=new boolean[this.carte.getLongueur()*this.carte.getLargeur()];
 		
 		//on rempli le tableau de valeurs maximales
@@ -161,7 +171,7 @@ public class Jeu {
 		boolean fini = false;
 		
 		
-		//récupération des 4 cases autour de la case courante
+		//rï¿½cupï¿½ration des 4 cases autour de la case courante
 		ArrayList<Coordonnees> autour = this.carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
 		
 		
@@ -169,7 +179,7 @@ public class Jeu {
 		while(!(fini)) {
 			//pour les 4 cases autour, on calcul la metrique
 			for (Coordonnees c: autour) {
-				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case à coté, on la remplace
+				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case ï¿½ cotï¿½, on la remplace
 				if (c!=null) {
 					if (metrique [iActuel]+1 < metrique [(c.getX()*10+c.getY())]) {
 						if(c.getPersonnage().equals(null)) {
@@ -184,7 +194,7 @@ public class Jeu {
 				}
 			}
 			
-			//on determine la prochaine case à analyser
+			//on determine la prochaine case ï¿½ analyser
 			
 			int metriqueMax=99;
 			int iMetriqueMax=999;
@@ -201,7 +211,7 @@ public class Jeu {
 					}
 				}
 			}
-			//la prochaine case est la première case non-verifier avec la metrique la plus faible 
+			//la prochaine case est la premiï¿½re case non-verifier avec la metrique la plus faible 
 			autour = this.carte.scannerAutourCoordonnee(x, y);
 			
 			fini = true;
