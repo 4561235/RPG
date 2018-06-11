@@ -18,7 +18,8 @@ public class Coordonnees {
 		this.x=c.x;
 		this.y=c.y;
 		this.lettre=c.lettre;
-		this.personnage=new Personnage(c.personnage);
+		if (c.personnage != null)
+			this.personnage=new Personnage(c.personnage);
 	}
 
 	public int getX()

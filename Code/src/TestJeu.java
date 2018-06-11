@@ -37,15 +37,16 @@ public class TestJeu {
 
 		//cratuin des personnages et affichage des différents objets
 		
-		Personnage a = new Personnage("Testorius", 10, 10, true);
-		Personnage v = new Personnage("Viktimus", 10, 10, false);
-		Personnage e = new Personnage("Ennemius", 10, 10, true);
+		Personnage a = new Personnage("Testorius", 10, 3, true);
+		Personnage v = new Personnage("Viktimus", 10, 3, false);
+		Personnage e = new Personnage("Ennemius", 10, 3, true);
+		Personnage c = new Personnage("Ciblus", 10, 3, false);
 		
-		jeu.getCarte().remplacerSurLaMap(3, 2, 'P',a);
+		jeu.getCarte().remplacerSurLaMap(3, 2, 'P', a);
 		jeu.getCarte().remplacerSurLaMap(2, 2, 'C',null);
 		jeu.getCarte().remplacerSurLaMap(1, 2, 'A',null);
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
-		jeu.getCarte().remplacerSurLaMap(5, 8, 'S',null);
+		jeu.getCarte().remplacerSurLaMap(5, 8, 'S', c);
 		jeu.getCarte().remplacerSurLaMap(3, 4, 'E', e);
 	
 		jeu.getCarte().dessinerMap();

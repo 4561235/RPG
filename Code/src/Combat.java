@@ -22,6 +22,7 @@ public class Combat{
 		defenseur.setHp(defenseur.getHp()-dmg);
 		System.out.println("pv apres" + defenseur.getHp());
 		this.mort(defenseur);
+		attaquant.setPa(attaquant.getPa()-1);
 	}
 	
 	//Mort: si les Pv d'un personnage sont inférieur ou égal à 0, il est supprimé de la carte
@@ -60,10 +61,10 @@ public class Combat{
 			action = this.carte.getInput().next();
 		}
 		
-			 if (action.equals("h"))   {this.attaquer(p, autour.get(0).getPersonnage());}
+			 if (action.equals("h")) {this.attaquer(p, autour.get(0).getPersonnage());}
 		else if (action.equals("g")) {this.attaquer(p, autour.get(1).getPersonnage());}
 		else if (action.equals("d")) {this.attaquer(p, autour.get(2).getPersonnage());}
-		else if (action.equals("b"))    {this.attaquer(p, autour.get(3).getPersonnage());}
+		else if (action.equals("b")) {this.attaquer(p, autour.get(3).getPersonnage());}
 		
 	}
 }

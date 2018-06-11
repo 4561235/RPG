@@ -20,6 +20,7 @@ public class Deplacement{
 	{
 		Coordonnees c = this.carte.chercherPersonnage(personnage);
 		char lettre = c.getLettre();
+		personnage.setPa(personnage.getPa()-1);
 		
 		if (s.equals("h"))
 		{
@@ -44,6 +45,7 @@ public class Deplacement{
 			this.carte.remplacerSurLaMap(c.getX(), c.getY(),' ', null);
 			this.carte.remplacerSurLaMap(c.getX()-1, c.getY(), lettre, personnage);
 		}
+		
 		
 	}
 	

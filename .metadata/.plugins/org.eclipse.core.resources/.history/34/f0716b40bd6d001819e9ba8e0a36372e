@@ -1,0 +1,428 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Jeu {
+
+	//C'est dans cette classe ou il y aurra le main et les fonction PRIVEE pour faire le calcul de degas ect.
+	private Scanner input = new Scanner(System.in);
+	
+	private Map carte;
+	
+	private Deplacement deplacement;
+	private Combat combat;
+	
+	private ArrayList<Personnage> participants;
+	
+	//constructeurs
+	
+	public Jeu() {
+		this.carte=new Map();
+		this.combat=new Combat(carte);
+		this.deplacement=new Deplacement(carte);
+		
+	}
+	
+	public Jeu (int hauteur, int largeur) {
+		this.carte=new Map (hauteur, largeur);
+		this.combat=new Combat(carte);
+		this.deplacement=new Deplacement(carte);
+	}
+
+	
+	
+	public Map getCarte() {
+		return this.carte;
+	}
+	
+	public void setCarte(Map m) {
+		this.carte=m;
+	}
+
+	//La m�thode principale donnant � l'utilisateur le choix de l'action � effectuer selon ce qui est disponible 
+	
+	public void choix(Personnage p) {
+		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		
+		boolean deplacer =  (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null) ||
+			                (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
+			                (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null) ||
+			                (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null); 
+		
+		boolean attaquer =  autour.get(0).getPersonnage()!=null ||
+							autour.get(1).getPersonnage()!=null ||
+							autour.get(2).getPersonnage()!=null ||
+							autour.get(3).getPersonnage()!=null;
+		
+		System.out.println("Au tour de " + p.getNom() +" !");
+		
+		System.out.println("vous pouvez:");
+		if (deplacer) {System.out.println("d: deplacer");}
+		if (attaquer) {System.out.println("a: attaquer");}
+		
+		System.out.println("r: rien");
+		
+		String choix = input.next();
+		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") )) {
+			System.out.println("choisissez un choix valide");
+			choix = input.next();
+		}
+		
+		if (choix.equals("d")) {this.deplacement.choixDeplacement(p, autour);}
+		else if (choix.equals("a")) {this.combat.choixAttaquer(p, autour);}
+		else {this.getCarte().dessinerMap();}
+		
+	}
+	
+	public void partie() {
+		this.participants=this.carte.getPersonnages();
+		
+		
+		for (Personnage p:participants) {
+			System.out.println(p);
+		}
+		
+		boolean enVie = false;///////////////////////////////////////////////A REMETTRE A TRUE
+		while (enVie) {
+			enVie=false;
+			for (Personnage c:this.participants) {
+				if (c.getHp()>0) {
+					if (c.isJoueur()) {
+						
+						//pour tester les objets
+						/*Objet potion1 = new Objet("potion");
+						Objet potion2 = new Objet("potion");
+						Objet potion3 = new Objet("potion");
+						Objet potion4 = new Objet("potion");
+						//System.out.println(potion.getNom());
+						c.ajouterObjet(potion1);
+						c.ajouterObjet(potion2);
+						c.ajouterObjet(potion3);
+						c.ajouterObjet(potion4);
+						c.choixObjet();*/
+						
+						this.choix(c);
+						enVie=true;
+					}
+					
+					else if (c.isJoueur()==false) {
+						
+					}
+					this.carte.dessinerMap();
+				}
+			}
+			System.out.println("nouveau tour");
+			
+		}
+		this.participants=this.carte.getPersonnages();
+		
+		
+		
+		
+		
+		
+		
+		
+		this.dijkstra(this.participants.get(0), this.participants.get(3));
+		
+		//this.pathfinding(this.participants.get(0), this.participants.get(3));
+		Coordonnees c = this.pathfinding(this.participants.get(0), this.participants.get(3));
+		System.out.println(c);
+		this.deplacementIA(this.participants.get(0), c);
+		this.carte.dessinerMap();
+		
+		
+		
+	}
+	
+	public Personnage plusProchae(Personnage p) {
+		//le tableau de l'algorithme de Dijkstra
+				int[]metrique= new int[this.carte.getLongueur()*this.carte.getLargeur()];
+				
+				// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
+				Coordonnees[] chemin=new Coordonnees[this.carte.getLongueur()*this.carte.getLargeur()];	
+				
+				//tableau de bool permet de savoir si une case a ddeja ete verifier ou non. Si non, on applique l'algorithme
+				boolean[] verifier=new boolean[this.carte.getLongueur()*this.carte.getLargeur()];
+				
+				//on rempli le tableau de valeurs maximales
+				for (int i=0; i<this.carte.getLongueur(); i++) {
+					for (int j=0; j<this.carte.getLargeur(); j++) {
+						metrique[this.carte.getICoordonnees(i, j)]=99;
+						chemin[this.carte.getICoordonnees(i, j)]=new Coordonnees(i, j, ' ',null);
+						if (this.carte.getTableau() [this.carte.getICoordonnees(i, j)] != null && this.carte.getTableau() [this.carte.getICoordonnees(i, j)] .getLettre() =='#') {
+							verifier[this.carte.getICoordonnees(i, j)]=true;
+						}
+					}
+				}
+				
+				
+				//emplacement dans la carte du personnage actuel
+				
+				
+				int iActuel=this.carte.getICoordonnees(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+				metrique[iActuel]=0;
+				verifier[iActuel]=true;
+				
+				boolean fini = false;
+				
+				
+				//recuperation des 4 cases autour de la case courante
+				ArrayList<Coordonnees> autour = this.carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+				
+				
+				
+				while(!(fini)) {
+					//pour les 4 cases autour, on calcul la metrique
+					for (Coordonnees c: autour) {
+						System.out.println("x et y =" + c.getX() + c.getY());
+						//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
+						if (c!=null){
+							if (c.getLettre()==' ' || (c.getLettre()!=' ' && c.getLettre()!='#' && c.getPersonnage()!=null)) {
+								if (verifier[this.carte.getICoordonnees(c.getX(), c.getY())]==false){
+									if(metrique [iActuel]+1 < metrique [this.carte.getICoordonnees(c.getX(), c.getY())]) {
+										metrique[this.carte.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
+										chemin[this.carte.getICoordonnees(c.getX(), c.getY())].setX(iActuel%10);
+										chemin[this.carte.getICoordonnees(c.getX(), c.getY())].setY(iActuel/10);
+										
+									}		
+								}			
+							}				
+						}
+					}
+					
+					//on determine la prochaine case a analyser
+					
+					int metriqueMax=99999999;
+					int iMetriqueMax=999;
+					int x = 100;
+					int y = 100;
+					
+					for (int i=0; i<this.carte.getLongueur(); i++) {
+						for (int j=0; j<this.carte.getLargeur(); j++) {
+							if (verifier[this.carte.getICoordonnees(i, j)]==false){
+								if (metrique[this.carte.getICoordonnees(i, j)]<metriqueMax) {
+									iMetriqueMax=this.carte.getICoordonnees(i, j);
+									metriqueMax=metrique[iMetriqueMax];
+									
+									y=j;
+									x=i;
+								}
+							}
+						}
+					}
+					
+					//la prochaine case est la premi�re case non-verifier avec la metrique la plus faible
+					System.out.println("x = " + x + " y = " + y);
+					autour = this.carte.scannerAutourCoordonnee(x, y);
+					verifier[this.carte.getICoordonnees(x, y)]=true;
+					iActuel=this.carte.getICoordonnees(x, y);
+					fini = true;
+					
+					for (int i=0; i<this.carte.getLongueur() && fini; i++) {
+						for (int j=0; j<this.carte.getLargeur() && fini; j++) {
+							if (verifier[this.carte.getICoordonnees(i, j)]==false) {
+								fini=false;
+							}
+						}
+					}
+					//System.out.println("fin while");
+					int totTrue = 0;
+					for (int i = 0; i < 100; i++){
+						if (verifier[i]){
+							totTrue++;
+						}
+					}
+					System.out.println(totTrue);
+				}
+				
+				System.out.println("fin");
+				
+			
+				
+				System.out.println("metrique:");
+				for (int i = 0; i<10; i++){
+					String s = "";
+					for (int j = 0; j<10; j++){
+						if (metrique[i*10+j]==99){ s+="## ";}
+						else{
+							s+=(metrique[i*10+j]) + " ";
+							if (metrique[i*10+j]<10)
+								s+= " ";
+						}	
+					}
+					System.out.println(s);
+				}
+				
+				
+				return chemin;
+	}
+	
+	public Coordonnees[] dijkstra(Personnage p, Personnage cible) {
+		
+		//le tableau de l'algorithme de Dijkstra
+		int[]metrique= new int[this.carte.getLongueur()*this.carte.getLargeur()];
+		
+		// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
+		Coordonnees[] chemin=new Coordonnees[this.carte.getLongueur()*this.carte.getLargeur()];	
+		
+		//tableau de bool permet de savoir si une case a ddeja ete verifier ou non. Si non, on applique l'algorithme
+		boolean[] verifier=new boolean[this.carte.getLongueur()*this.carte.getLargeur()];
+		
+		//on rempli le tableau de valeurs maximales
+		for (int i=0; i<this.carte.getLongueur(); i++) {
+			for (int j=0; j<this.carte.getLargeur(); j++) {
+				metrique[this.carte.getICoordonnees(i, j)]=99;
+				chemin[this.carte.getICoordonnees(i, j)]=new Coordonnees(i, j, ' ',null);
+				if (this.carte.getTableau() [this.carte.getICoordonnees(i, j)] != null && this.carte.getTableau() [this.carte.getICoordonnees(i, j)] .getLettre() =='#') {
+					verifier[this.carte.getICoordonnees(i, j)]=true;
+				}
+			}
+		}
+		
+		
+		//emplacement dans la carte du personnage actuel
+		
+		
+		int iActuel=this.carte.getICoordonnees(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		metrique[iActuel]=0;
+		verifier[iActuel]=true;
+		
+		boolean fini = false;
+		
+		
+		//recuperation des 4 cases autour de la case courante
+		ArrayList<Coordonnees> autour = this.carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		
+		
+		
+		while(!(fini)) {
+			//pour les 4 cases autour, on calcul la metrique
+			for (Coordonnees c: autour) {
+				System.out.println("x et y =" + c.getX() + c.getY());
+				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
+				if (c!=null){
+					System.out.println("0");
+					if ( c.getPersonnage() == null || c.getPersonnage().equals(cible)) {
+						System.out.println("1");
+						if ( c.getLettre()==' ' || c.getLettre() == this.carte.chercherPersonnage(cible).getLettre()) {
+							System.out.println("2");
+							if (verifier[this.carte.getICoordonnees(c.getX(), c.getY())]==false){
+								System.out.println("3");
+								if(metrique [iActuel]+1 < metrique [this.carte.getICoordonnees(c.getX(), c.getY())]) {
+									System.out.println("4");
+									metrique[this.carte.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
+									chemin[this.carte.getICoordonnees(c.getX(), c.getY())].setX(iActuel%10);
+									chemin[this.carte.getICoordonnees(c.getX(), c.getY())].setY(iActuel/10);
+									
+								}
+							}		
+						}			
+					}				
+				}
+			}
+			
+			//on determine la prochaine case a analyser
+			
+			int metriqueMax=99999999;
+			int iMetriqueMax=999;
+			int x = 100;
+			int y = 100;
+			
+			for (int i=0; i<this.carte.getLongueur(); i++) {
+				for (int j=0; j<this.carte.getLargeur(); j++) {
+					if (verifier[this.carte.getICoordonnees(i, j)]==false){
+						if (metrique[this.carte.getICoordonnees(i, j)]<metriqueMax) {
+							iMetriqueMax=this.carte.getICoordonnees(i, j);
+							metriqueMax=metrique[iMetriqueMax];
+							
+							y=j;
+							x=i;
+						}
+					}
+				}
+			}
+			
+			//la prochaine case est la premi�re case non-verifier avec la metrique la plus faible
+			System.out.println("x = " + x + " y = " + y);
+			autour = this.carte.scannerAutourCoordonnee(x, y);
+			verifier[this.carte.getICoordonnees(x, y)]=true;
+			iActuel=this.carte.getICoordonnees(x, y);
+			fini = true;
+			
+			for (int i=0; i<this.carte.getLongueur() && fini; i++) {
+				for (int j=0; j<this.carte.getLargeur() && fini; j++) {
+					if (verifier[this.carte.getICoordonnees(i, j)]==false) {
+						fini=false;
+					}
+				}
+			}
+			//System.out.println("fin while");
+			int totTrue = 0;
+			for (int i = 0; i < 100; i++){
+				if (verifier[i]){
+					totTrue++;
+				}
+			}
+			System.out.println(totTrue);
+		}
+		
+		System.out.println("fin");
+		
+	
+		
+		System.out.println("metrique:");
+		for (int i = 0; i<10; i++){
+			String s = "";
+			for (int j = 0; j<10; j++){
+				if (metrique[i*10+j]==99){ s+="## ";}
+				else{
+					s+=(metrique[i*10+j]) + " ";
+					if (metrique[i*10+j]<10)
+						s+= " ";
+				}	
+			}
+			System.out.println(s);
+		}
+		
+		
+		return chemin;
+	}
+	
+	public Coordonnees pathfinding (Personnage depart, Personnage cible) {
+		
+		System.out.println("debut pathfinding");
+		
+		Coordonnees chemin[] = this.dijkstra(depart, cible);
+		Coordonnees path = this.carte.chercherPersonnage(cible);
+		
+		System.out.println(path);
+		Coordonnees precedent = path;
+		
+		
+		while (!(path.getX()==this.carte.chercherPersonnage(depart).getX() && path.getY()==this.carte.chercherPersonnage(depart).getY())) {
+			precedent = new Coordonnees(path);
+			path=chemin[path.getY()*this.carte.getLongueur()+path.getX()];
+			System.out.println("path " + path + " actuel " + this.carte.chercherPersonnage(depart));
+		}
+		
+		
+		return precedent;
+		
+	}
+	
+	public void deplacementIA(Personnage p, Coordonnees c) {
+		if (c.getX() == this.carte.chercherPersonnage(p).getX()+1) {
+			this.deplacement.deplacerPersonnage(p, "d");
+		}
+		else if (c.getX() == this.carte.chercherPersonnage(p).getX()-1) {
+			this.deplacement.deplacerPersonnage(p, "g");
+		}
+		else if (c.getY() == this.carte.chercherPersonnage(p).getY()+1) {
+			this.deplacement.deplacerPersonnage(p, "h");
+		}
+		else if (c.getY() == this.carte.chercherPersonnage(p).getY()-1) {
+			this.deplacement.deplacerPersonnage(p, "b");
+		}
+		
+	}
+}
