@@ -45,6 +45,17 @@ public class Personnage {
 		this.joueur=joueur;
 	}
 	
+	public Personnage(Personnage p) {
+		this.nom=p.nom;
+		this.hp=p.hp;
+		this.hpmax=p.hpmax;
+		this.pa=p.pa;
+		this.pamax=p.pamax;
+		this.joueur=p.joueur;
+		this.listeObjet=new ArrayList<Objet>(p.listeObjet);
+	}
+	
+	
 	public void ajouterObjet(Objet o)
 	{
 		this.listeObjet.add(o);
