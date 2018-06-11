@@ -21,6 +21,15 @@ public class Map {
 		
 	}
 	
+	public Map(Map m) {
+		this.longueur=m.longueur;
+		this.largeur=m.largeur;
+		this.tableau=new Coordonnees[m.tailleDuTableau];
+		for (int i = 0; i<m.longueur*m.largeur; i++) {
+			this.tableau[i]= new Coordonnees (m.tableau[i]);
+		}
+	}
+	
 	public int getLongueur()
 	{
 		return longueur;
@@ -35,7 +44,18 @@ public class Map {
 		return input;
 	}
 
+	public Coordonnees getCoordonnees(int i) {
+		return this.tableau[i];
+	}
 	
+	public Coordonnees[] getTableau() {
+		return tableau;
+	}
+
+	public void setTableau(Coordonnees[] tableau) {
+		this.tableau = tableau;
+	}
+
 	public ArrayList<Personnage> getPersonnages(){
 		ArrayList<Personnage> liste = new ArrayList<Personnage>();
 		for (int i =0; i<this.tailleDuTableau; i++) {
@@ -58,14 +78,10 @@ public class Map {
 			}
 		}
 		
-		if(nbElements==0)
-		{
-			this.tableau[nbElements] = new Coordonnees(x,y,lettre,null);
-		}
-		else
-		{
-			this.tableau[nbElements + 1] = new Coordonnees(x,y,lettre,null);
-		}
+		
+		this.tableau[nbElements] = new Coordonnees(x,y,lettre,null);
+		
+		
 		
 		//System.out.println(tableau[0].x);
 		//System.out.println("nb" +nbElements);
@@ -126,6 +142,7 @@ public class Map {
 			{
 				
 				//System.out.println("C'est ca: " +tableau[i]);
+				//System.out.println("Iteration: " +i);
 				
 				if(tableau[i].getX()==x && tableau[i].getY() - 1 ==y ) //On scanne la case au dessus
 				{
@@ -153,6 +170,22 @@ public class Map {
 		return liste;
 	}
 	
+	public Coordonnees scannerPoint(int x, int y)
+	{
+		for(int i=0; i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
+			{
+				if(tableau[i].getX()== x && tableau[i].getY() == y )
+				{
+					return this.tableau[i];
+				}
+			}
+		}
+		
+		return new Coordonnees(0,0,'!',null);
+	}
+	
 	public Coordonnees chercherPersonnage(Personnage personnage) //On va regarder sur la map pour trouver les coordonnees du personnage
 	{
 		for(int i=0; i<tailleDuTableau;i++)
@@ -165,6 +198,37 @@ public class Map {
 		
 		return new Coordonnees(0,0,'!',null);
 	}
+	
+	public void ajouterObjetSurLaMap(int x, int y, Objet o)
+	{
+		for(int i=0; i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
+			{
+				if(tableau[i].getX()== x && tableau[i].getY() == y )
+				{
+					this.tableau[i].ajouterObjet(o);
+				}
+			}
+			
+		}
+	}
+	
+	public void enleverObjetDeLaMap(int x, int y, Objet o)
+	{
+		for(int i=0; i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
+			{
+				if(tableau[i].getX()== x && tableau[i].getY() == y )
+				{
+					this.tableau[i].enleverObjet(o);
+				}
+			}
+		}
+	}
+	
+	
 	
 
 }
