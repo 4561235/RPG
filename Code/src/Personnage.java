@@ -61,12 +61,15 @@ public class Personnage {
 		}
 	}
 	
-	public void choixObjet()
+	public boolean choixObjet()
 	{
+		boolean leChoixEstFait = true;
+		
 		for(int i = 0; i < this.listeObjet.size();i++)
 		{
 			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
 		}
+		System.out.println("a: annuler");
 		
 		String action = this.input.next(); 
 		int nombreChoix;
@@ -96,6 +99,11 @@ public class Personnage {
 				nombreChoix = -1;
 			}
 			
+			if(action.equals("a"))
+			{
+				return false;
+			}
+			
 			System.out.println("Veuillez choisir un objet valide");
 			action = this.input.next();
 			
@@ -108,6 +116,12 @@ public class Personnage {
 			
 		}
 		
+		if(action.equals("a"))
+		{
+			return false;
+		}
+		
+		return leChoixEstFait;
 		
 	}
 

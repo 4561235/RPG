@@ -32,7 +32,7 @@ public class Combat{
 	
 	//Méthode donnant au joueur le choix de la direction dans la quelle attaquer
 	
-	public void choixAttaquer(Personnage p, ArrayList<Coordonnees> autour) {
+	public boolean choixAttaquer(Personnage p, ArrayList<Coordonnees> autour) {
 		
 		//Vérification de sdirections disponible
 		
@@ -46,15 +46,16 @@ public class Combat{
 		if (gauche) {System.out.println("g: gauche --> " + autour.get(1).getPersonnage().getNom());}
 		if (droite) {System.out.println("d: droite --> " + autour.get(2).getPersonnage().getNom());}
 		if (bas) {System.out.println("b: bas --> " + autour.get(3).getPersonnage().getNom());}
-		
+		System.out.println("a: annuler");
 		//tant que la cible n'est pas valide
 		
 		String action = this.carte.getInput().next();
+		
 		while  ((action.equals("h") && !(haut)) ||
 				(action.equals("b") && !(bas)) ||
 				(action.equals("g") && !(gauche)) ||
 				(action.equals("d") && !(droite)) ||
-				!(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d"))) {
+				!(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d") || action.equals("a")))  {
 			
 			System.out.println("Veuillez choisir une cible valide");
 			action = this.carte.getInput().next();
@@ -64,6 +65,10 @@ public class Combat{
 		else if (action.equals("g")) {this.attaquer(p, autour.get(1).getPersonnage());}
 		else if (action.equals("d")) {this.attaquer(p, autour.get(2).getPersonnage());}
 		else if (action.equals("b"))    {this.attaquer(p, autour.get(3).getPersonnage());}
+		else if (action.equals("a"))    {return false;}
+			 
+		return true; //On return true pour dire que l'utilisateur a vraiment attaquer
+			
 		
 	}
 }
