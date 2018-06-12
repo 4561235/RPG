@@ -94,7 +94,7 @@ public class Jeu {
 	public void partie() {
 		
 		this.participants=this.carte.getPersonnages();
-		boolean enVie = true;
+		boolean enVie = true;//////////////////////////////////////////a remettre a true
 		System.out.println("liste" + participants);
 		boolean leChoixEstFait = false;
 		while (enVie) {
@@ -121,19 +121,27 @@ public class Jeu {
 						{
 						leChoixEstFait = this.choix(c);
 						}
-						enVie=true;
 						
 					}
+					else if (c.isJoueur()==false) {
+						this.IA(c);
+					}
+					
 					this.carte.dessinerMap();
 				}
+				c.setPa(c.getPamax());
+			}
+			for (Personnage p:this.participants) {
+				enVie= enVie || (p.isJoueur() && p.getHp()>0);
 			}
 			//this.carte.dessinerMap();
 			System.out.println("nouveau tour");
 			
 		}
+		
 		this.participants=this.carte.getPersonnages();
 		
-		
+		//this.dijkstra(this.participants.get(3));
 		
 		
 		
@@ -141,45 +149,161 @@ public class Jeu {
 	}
 	
 	public void IA(Personnage p) {
-			ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
-			
-			System.out.println(p.getPa());
-			
-			boolean attaquer = false;
-			
-			for (Coordonnees c :autour) {
-				attaquer = attaquer || c.getPersonnage()!=null;
+		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		
+		System.out.println(p.getPa());
+		
+		boolean attaquer = false;
+		
+		for (Coordonnees c :autour) {
+			attaquer = attaquer || c.getPersonnage()!=null;
+		}
+		
+		if (attaquer) {
+			ArrayList<Personnage> attaquable = new ArrayList<Personnage>();
+			for (Coordonnees c:autour) {
+				if (c.getPersonnage()!=null) {attaquable.add(c.getPersonnage());}
 			}
+			Random rand = new Random();
+			this.combat.attaquer(p, attaquable.get(rand.nextInt(attaquable.size())));
 			
-			if (attaquer) {
-				ArrayList<Personnage> attaquable = new ArrayList<Personnage>();
-				for (Coordonnees c:autour) {
-					if (c.getPersonnage()!=null) {attaquable.add(c.getPersonnage());}
+		}
+		else {
+			Personnage cible = this.plusProche(p);
+			Coordonnees c = this.pathfinding(p, cible);
+			this.deplacementIA(p, c);
+		}
+	}
+		
+		
+	
+	public Personnage plusProche(Personnage p) {
+		int[] metrique = this.dijkstra(p);
+		int iMax = 0;
+		
+		for (int i = 0; i<this.carte.getLargeur()*this.carte.getLongueur(); i++) {
+			if (this.carte.getTableau()[i].getPersonnage()!=null &&
+				this.carte.getTableau()[i].getPersonnage() != p &&
+				metrique[i]<metrique[iMax]){iMax=i;}
+		}
+		
+		
+		return this.carte.getTableau()[iMax].getPersonnage();
+	}
+		
+	private int[] dijkstra(Personnage p) {
+		
+		//le tableau de l'algorithme de Dijkstra
+		int[]metrique= new int[this.carte.getLongueur()*this.carte.getLargeur()];
+		
+		// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
+		
+		//tableau de bool permet de savoir si une case a ddeja ete verifier ou non. Si non, on applique l'algorithme
+		boolean[] verifier=new boolean[this.carte.getLongueur()*this.carte.getLargeur()];
+		
+		//on rempli le tableau de valeurs maximales
+		for (int i=0; i<this.carte.getLongueur(); i++) {
+			for (int j=0; j<this.carte.getLargeur(); j++) {
+				metrique[this.carte.getICoordonnees(i, j)]=99;
+				if (this.carte.getTableau() [this.carte.getICoordonnees(i, j)] != null && this.carte.getTableau() [this.carte.getICoordonnees(i, j)] .getLettre() =='#') {
+					verifier[this.carte.getICoordonnees(i, j)]=true;
 				}
-				Random rand = new Random();
-				this.combat.attaquer(p, attaquable.get(rand.nextInt(attaquable.size())));
-				
-			}
-			else {
-				Personnage cible = this.plusProche(p);
-				Coordonnees c = this.pathfinding(p, cible);
-				this.deplacementIA(p, c);
 			}
 		}
 		
 		
-		this.pathfindig(this.participants.get(0));
+		//emplacement dans la carte du personnage actuel
+		
+		
+		int iActuel=this.carte.getICoordonnees(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		metrique[iActuel]=0;
+		verifier[iActuel]=true;
+		
+		boolean fini = false;
+		
+		
+		//recuperation des 4 cases autour de la case courante
+		ArrayList<Coordonnees> autour = this.carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
 		
 		
 		
+		while(!(fini)) {
+			//pour les 4 cases autour, on calcul la metrique
+			for (Coordonnees c: autour) {
+				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
+				if (c!=null){
+					if ( c.getLettre()!='#') {
+						if (verifier[this.carte.getICoordonnees(c.getX(), c.getY())]==false){
+							if(metrique [iActuel]+1 < metrique [this.carte.getICoordonnees(c.getX(), c.getY())]) {
+								metrique[this.carte.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
+									
+								
+							}		
+						}			
+					}				
+				}
+			}
+			
+			//on determine la prochaine case a analyser
+			
+			int metriqueMax=99999999;
+			int iMetriqueMax=999;
+			int x = 100;
+			int y = 100;
+			
+			for (int i=0; i<this.carte.getLongueur(); i++) {
+				for (int j=0; j<this.carte.getLargeur(); j++) {
+					if (verifier[this.carte.getICoordonnees(i, j)]==false){
+						if (metrique[this.carte.getICoordonnees(i, j)]<metriqueMax) {
+							iMetriqueMax=this.carte.getICoordonnees(i, j);
+							metriqueMax=metrique[iMetriqueMax];
+							
+							y=j;
+							x=i;
+						}
+					}
+				}
+			}
+			
+			//la prochaine case est la premi�re case non-verifier avec la metrique la plus faible
+			autour = this.carte.scannerAutourCoordonnee(x, y);
+			verifier[this.carte.getICoordonnees(x, y)]=true;
+			iActuel=this.carte.getICoordonnees(x, y);
+			fini = true;
+			
+			for (int i=0; i<this.carte.getLongueur() && fini; i++) {
+				for (int j=0; j<this.carte.getLargeur() && fini; j++) {
+					if (verifier[this.carte.getICoordonnees(i, j)]==false) {
+						fini=false;
+					}
+				}
+			}
+			
+		}
+		/*
+		System.out.println("fin");
 		
-		
-		
-		
-		
-	}
 	
-	private Coordonnees[] pathfindig(Personnage p) {
+		
+		System.out.println("metrique:");
+		for (int i = 0; i<10; i++){
+			String s = "";
+			for (int j = 0; j<10; j++){
+				if (metrique[i*10+j]==99){ s+="## ";}
+				else{
+					s+=(metrique[i*10+j]) + " ";
+					if (metrique[i*10+j]<10)
+						s+= " ";
+				}	
+			}
+			System.out.println(s);
+		}
+		*/
+		
+		return metrique;
+	}
+
+	private Coordonnees[] dijkstra(Personnage p, Personnage cible) {
 		
 		//le tableau de l'algorithme de Dijkstra
 		int[]metrique= new int[this.carte.getLongueur()*this.carte.getLargeur()];
@@ -271,15 +395,8 @@ public class Jeu {
 					}
 				}
 			}
-			//System.out.println("fin while");
-			int totTrue = 0;
-			for (int i = 0; i < 100; i++){
-				if (verifier[i]){
-					totTrue++;
-				}
-			}
 		}
-		
+		/*
 		System.out.println("fin");
 		
 	
@@ -297,7 +414,7 @@ public class Jeu {
 			}
 			System.out.println(s);
 		}
-		
+		*/
 		
 		return chemin;
 	}

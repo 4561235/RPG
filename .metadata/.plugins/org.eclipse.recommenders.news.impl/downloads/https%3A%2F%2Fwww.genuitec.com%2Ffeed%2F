@@ -12,7 +12,7 @@
 	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://www.genuitec.com</link>
 	<description>The Cloud Control Company</description>
-	<lastBuildDate>Mon, 11 Jun 2018 15:28:54 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 12 Jun 2018 13:07:32 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -307,7 +307,7 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 
 Page Caching using disk: enhanced (SSL caching disabled) 
 Content Delivery Network via resources.cloud.genuitec.com
-Database Caching 152/157 queries in 0.029 seconds using disk
+Database Caching 152/157 queries in 0.028 seconds using disk
 
-Served from: www.genuitec.com @ 2018-06-11 10:39:25 by W3 Total Cache
+Served from: www.genuitec.com @ 2018-06-12 10:37:32 by W3 Total Cache
 -->

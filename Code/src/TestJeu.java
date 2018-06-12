@@ -61,12 +61,12 @@ public class TestJeu {
 		System.out.println("Je cherche le personnage donner en parametre");
 		System.out.println("resultat de ma recherche: " +jeu.getCarte().chercherPersonnage(a).toString());
 		*/
-		//test du syst�me de choix
+		//test du systeme de choix
 		Objet pot1 = new Objet("potion");
 		Objet pot2 = new Objet("potion");
 		
-		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot1);
-		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot2);
+		//jeu.getCarte().ajouterObjetSurLaMap(2,2,pot1);
+		//jeu.getCarte().ajouterObjetSurLaMap(2,2,pot2);
 		
 		System.out.println(jeu.getCarte().scannerPoint(2,2));
 		

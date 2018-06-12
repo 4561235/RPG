@@ -192,21 +192,7 @@ public class Map {
 		
 		return new Coordonnees(0,0,'!',null);
 	}
-	
-	public Coordonnees scannerPoint(int x, int y)
-	{
-		for(int i=0; i<this.longueur*this.largeur;i++)
-		{
-			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
-			{
-				if(tableau[i].getX()== x && tableau[i].getY() == y )
-				{
-					return this.tableau[i];
-				}
-			}
-		}
-		return new Coordonnees (0, 0, '!', null);
-	}
+
 	
 	public int getICoordonnees(int x, int y){
 		for(int i=0; i<this.longueur*this.largeur+1;i++)

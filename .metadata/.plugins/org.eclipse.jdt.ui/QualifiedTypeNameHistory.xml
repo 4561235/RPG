@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="coordonnees"/>
-<fullyQualifiedTypeName name="Personnage"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Coordonnees"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
-</qualifiedTypeNameHistroy>
-=======
 <qualifiedTypeNameHistroy/>
->>>>>>> master
