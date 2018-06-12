@@ -50,7 +50,7 @@ public class Deplacement{
 	}
 	
 	//choix de la direction du d�placement
-	public void choixDeplacement(Personnage p, ArrayList<Coordonnees> autour) {
+	public boolean choixDeplacement(Personnage p, ArrayList<Coordonnees> autour) {
 		
 		//Verification des directions disponibles
 		
@@ -65,6 +65,7 @@ public class Deplacement{
 		if (droite) System.out.println("d: droite");
 		if (bas) System.out.println("b: bas");
 		if (gauche) System.out.println("g: gauche");
+		System.out.println("a: annuler");
 		
 		@SuppressWarnings("resource")
 		String action = this.carte.getInput().next();
@@ -72,12 +73,21 @@ public class Deplacement{
 		//tant que le choix entrer ne'est une direction valide ou un mot valide
 		
 		while((action.equals("h") && !(haut)) || (action.equals("b") && !(bas)) || (action.equals("g") && !(gauche)) || (action.equals("d") && !(droite))
-			|| !(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d")))
+			|| !(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d") || action.equals("a")) )
 		{
 			System.out.println("veuillez choisir une direction valide");
 			action = this.carte.getInput().nextLine();
 		}
 		
-		this.deplacerPersonnage(p, action);
+		if(action.equals("a"))
+		{
+			return false;
+		}
+		else
+		{
+			this.deplacerPersonnage(p, action);
+		}
+		
+		return true;
 	}
 }

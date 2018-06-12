@@ -136,6 +136,7 @@ public class Map {
 			{
 				
 				//System.out.println("C'est ca: " +tableau[i]);
+				//System.out.println("Iteration: " +i);
 				
 				if(tableau[i].getX()==x && tableau[i].getY() - 1 ==y ) //On scanne la case au dessus
 				{
@@ -161,6 +162,22 @@ public class Map {
 		}
 		
 		return liste;
+	}
+	
+	public Coordonnees scannerPoint(int x, int y)
+	{
+		for(int i=0; i<tailleDuTableau;i++)
+		{
+			if(tableau[i] != null && x<=this.largeur && y<=this.longueur)
+			{
+				if(tableau[i].getX()== x && tableau[i].getY() == y )
+				{
+					return this.tableau[i];
+				}
+			}
+		}
+		
+		return new Coordonnees(0,0,'!',null);
 	}
 	
 	public Coordonnees chercherPersonnage(Personnage personnage) //On va regarder sur la map pour trouver les coordonnees du personnage

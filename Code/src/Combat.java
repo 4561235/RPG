@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Combat{
 	
-	private Map carte;//l'attirbut Carte est le même que celui de Jeu et Deplacement
+	private Map carte;//l'attirbut Carte est le mï¿½me que celui de Jeu et Deplacement
 	
 	//Constructeurs
 	
@@ -14,7 +14,7 @@ public class Combat{
 		this.carte =(m);
 	}
 	
-	//attaquer inflige des degats entre 3 et 5 de manière aléatoire
+	//attaquer inflige des degats entre 3 et 5 de maniï¿½re alï¿½atoire
 	
 	public void attaquer(Personnage attaquant, Personnage defenseur) {
 		int dmg =(int) (Math.random()*3+3);
@@ -25,17 +25,17 @@ public class Combat{
 		attaquant.setPa(attaquant.getPa()-1);
 	}
 	
-	//Mort: si les Pv d'un personnage sont inférieur ou égal à 0, il est supprimé de la carte
+	//Mort: si les Pv d'un personnage sont infï¿½rieur ou ï¿½gal ï¿½ 0, il est supprimï¿½ de la carte
 	
 	public void mort(Personnage p){
 		if (p.getHp()<=0) {this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
 	}
 	
-	//Méthode donnant au joueur le choix de la direction dans la quelle attaquer
+	//Mï¿½thode donnant au joueur le choix de la direction dans la quelle attaquer
 	
-	public void choixAttaquer(Personnage p, ArrayList<Coordonnees> autour) {
+	public boolean choixAttaquer(Personnage p, ArrayList<Coordonnees> autour) {
 		
-		//Vérification de sdirections disponible
+		//Vï¿½rification de sdirections disponible
 		
 		boolean haut   = (autour.get(0).getPersonnage()!=null);
 		boolean gauche = (autour.get(1).getPersonnage()!=null);
@@ -47,15 +47,16 @@ public class Combat{
 		if (gauche) {System.out.println("g: gauche --> " + autour.get(1).getPersonnage().getNom());}
 		if (droite) {System.out.println("d: droite --> " + autour.get(2).getPersonnage().getNom());}
 		if (bas) {System.out.println("b: bas --> " + autour.get(3).getPersonnage().getNom());}
-		
+		System.out.println("a: annuler");
 		//tant que la cible n'est pas valide
 		
 		String action = this.carte.getInput().next();
+		
 		while  ((action.equals("h") && !(haut)) ||
 				(action.equals("b") && !(bas)) ||
 				(action.equals("g") && !(gauche)) ||
 				(action.equals("d") && !(droite)) ||
-				!(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d"))) {
+				!(action.equals("h") || action.equals("b") || action.equals("g") || action.equals("d") || action.equals("a")))  {
 			
 			System.out.println("Veuillez choisir une cible valide");
 			action = this.carte.getInput().next();
@@ -64,7 +65,9 @@ public class Combat{
 			 if (action.equals("h")) {this.attaquer(p, autour.get(0).getPersonnage());}
 		else if (action.equals("g")) {this.attaquer(p, autour.get(1).getPersonnage());}
 		else if (action.equals("d")) {this.attaquer(p, autour.get(2).getPersonnage());}
-		else if (action.equals("b")) {this.attaquer(p, autour.get(3).getPersonnage());}
+		else if (action.equals("a"))    {return false;}
+		else if (action.equals("b"))    {this.attaquer(p, autour.get(3).getPersonnage());}
+		return true; //On return true pour dire que l'utilisateur a vraiment attaquer
 		
 	}
 }

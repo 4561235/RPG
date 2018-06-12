@@ -46,8 +46,11 @@ public class Objet {
 	public void activerPotion(Personnage p)
 	{
 		p.setHp(p.getHp() + 4);
+		System.out.println("Potion utilise! + 4 HP");
+		int hpmax = p.getHpmax();
+		int hp =  p.getHp();
 		
-		if(p.getHpmax()<=p.getHp());
+		if(hpmax < hp)
 		{
 			p.setHp(p.getHpmax());
 		}

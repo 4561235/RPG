@@ -65,19 +65,22 @@ public class Personnage {
 	{
 		for(int i = 0; i < this.listeObjet.size();i++)
 		{
-			if(o.getNom().equals(this.listeObjet.get(i)))
+			if(o.getNom().equals(this.listeObjet.get(i).getNom()))
 			{
 				this.listeObjet.remove(i);
 			}
 		}
 	}
 	
-	public void choixObjet()
+	public boolean choixObjet()
 	{
+		boolean leChoixEstFait = true;
+		
 		for(int i = 0; i < this.listeObjet.size();i++)
 		{
 			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
 		}
+		System.out.println("a: annuler");
 		
 		String action = this.input.next(); 
 		int nombreChoix;
@@ -93,29 +96,43 @@ public class Personnage {
 		
 		while(!(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)) 
 		{
-			action = this.input.next();
 			
 			try
 			{
 				nombreChoix = Integer.parseInt(action);
+				if( nombreChoix <= this.listeObjet.size()-1)
+				{
+					break;
+				}
 			}
 			catch(Exception e)
 			{
 				nombreChoix = -1;
 			}
 			
+			if(action.equals("a"))
+			{
+				return false;
+			}
 			
-			System.out.println("Veuillez choisir une cible valide");
+			System.out.println("Veuillez choisir un objet valide");
+			action = this.input.next();
 			
 		} 
 		
-		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size())
+		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)
 		{
 			this.listeObjet.get(nombreChoix).activerObjet(this);
 			this.enleverObjet(listeObjet.get(nombreChoix));
 			
 		}
 		
+		if(action.equals("a"))
+		{
+			return false;
+		}
+		
+		return leChoixEstFait;
 		
 	}
 

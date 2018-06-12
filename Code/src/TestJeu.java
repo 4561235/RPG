@@ -35,7 +35,7 @@ public class TestJeu {
 			jeu.getCarte().mettreSurLaMap(x, 9, '#');
 		}
 
-		//cratuin des personnages et affichage des différents objets
+		//cratuin des personnages et affichage des diffï¿½rents objets
 		
 		Personnage a = new Personnage("Testorius", 10, 3, true);
 		Personnage v = new Personnage("Viktimus", 10, 3, false);
@@ -45,14 +45,14 @@ public class TestJeu {
 		jeu.getCarte().remplacerSurLaMap(3, 2, 'P', a);
 		jeu.getCarte().remplacerSurLaMap(2, 2, 'C',null);
 		jeu.getCarte().remplacerSurLaMap(1, 2, 'A',null);
+		jeu.getCarte().remplacerSurLaMap(3, 2, 'T',a);
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
 		jeu.getCarte().remplacerSurLaMap(5, 8, 'S', c);
 		jeu.getCarte().remplacerSurLaMap(3, 4, 'E', e);
 	
 		jeu.getCarte().dessinerMap();
 		
-		ArrayList<Coordonnees> liste = jeu.getCarte().scannerAutourCoordonnee(5,8);
-		
+		/*ArrayList<Coordonnees> liste = jeu.getCarte().scannerAutourCoordonnee(5,8);
 		System.out.println(liste.get(0).toString());
 		System.out.println(liste.get(1).toString());
 		System.out.println(liste.get(2).toString());
@@ -60,8 +60,15 @@ public class TestJeu {
 		System.out.println();
 		System.out.println("Je cherche le personnage donner en parametre");
 		System.out.println("resultat de ma recherche: " +jeu.getCarte().chercherPersonnage(a).toString());
+		*/
+		//test du systï¿½me de choix
+		Objet pot1 = new Objet("potion");
+		Objet pot2 = new Objet("potion");
 		
-		//test du système de choix
+		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot1);
+		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot2);
+		
+		System.out.println(jeu.getCarte().scannerPoint(2,2));
 		
 		
 		jeu.partie();
