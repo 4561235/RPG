@@ -59,20 +59,20 @@ public class Jeu {
 							autour.get(3).getPersonnage()!=null;
 		
 		//Pour voir si il y a des objets a l'endroit du personnage
-		/*Coordonnees c = this.carte.chercherPersonnage(p);
+		Coordonnees c = this.carte.chercherPersonnage(p);
 		boolean rammasserObjets = true;
 		
-		if(c.getListeObjet() == null)
+		if(c.getListeObjet().size() == 0)
 		{
 			rammasserObjets = false; //si on detecte pas d'objets sur la carte, on ne peut pas rammasser
 		}
-		*/
+		
 		//
 		
 		System.out.println("vous pouvez:");
 		if (deplacer) {System.out.println("d: deplacer");}
 		if (attaquer) {System.out.println("a: attaquer");}
-		//if (rammasserObjets) {System.out.println("ram: rammasser objets");} //A DECOMENTER APRES QUE LA METHODE enelverObjet va etre prete
+		if (rammasserObjets) {System.out.println("ram: rammasser objets");} 
 		System.out.println("u: utiliser objet");
 		System.out.println("r: rien");
 		
@@ -85,7 +85,7 @@ public class Jeu {
 		if (choix.equals("d")) {leChoixEstFait = this.deplacement.choixDeplacement(p, autour);}
 		else if (choix.equals("a")) {leChoixEstFait = this.combat.choixAttaquer(p, autour);}
 		else if (choix.equals("u")) {leChoixEstFait = p.choixObjet();}
-		//else if (choix.equals("ram")) //A DECOMENTER APRES QUE LA METHODE enelverObjet va etre prete
+		else if (choix.equals("ram")) {leChoixEstFait = p.ramasserObjet(c);}
 		else {p.setPa(0);}
 		
 		return leChoixEstFait; //Le jouer a vraiment fait un choix
@@ -109,7 +109,7 @@ public class Jeu {
 						
 						
 						//pour tester les objets
-						Objet potion1 = new Objet("potion");
+						/*Objet potion1 = new Objet("potion");
 						Objet potion2 = new Objet("potion");
 						Objet potion3 = new Objet("potion");
 						Objet potion4 = new Objet("potion");
@@ -117,7 +117,7 @@ public class Jeu {
 						c.ajouterObjet(potion1);
 						c.ajouterObjet(potion2);
 						c.ajouterObjet(potion3);
-						c.ajouterObjet(potion4);
+						c.ajouterObjet(potion4);*/
 					
 						leChoixEstFait = false; //pour re-rentrer dans la boucle
 						//la boucle pour que le jouer puisse refaire un choix

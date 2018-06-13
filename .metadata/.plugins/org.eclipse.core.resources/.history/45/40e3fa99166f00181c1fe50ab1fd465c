@@ -42,6 +42,8 @@ public class TestJeu {
 		Personnage e = new Personnage("Ennemius", 10, 3, true);
 		Personnage c = new Personnage("Ciblus", 10, 3, false);
 		
+		jeu.getCarte().remplacerSurLaMap(2, 2, 'C',null);
+		jeu.getCarte().remplacerSurLaMap(1, 2, 'A',null);
 		jeu.getCarte().remplacerSurLaMap(3, 2, 'T',a);
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
 		jeu.getCarte().remplacerSurLaMap(5, 8, 'S', c);
@@ -62,8 +64,8 @@ public class TestJeu {
 		Objet pot1 = new Objet("potion");
 		Objet pot2 = new Objet("potion");
 		
-		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot1);
-		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot2);
+		//jeu.getCarte().ajouterObjetSurLaMap(2,2,pot1);
+		//jeu.getCarte().ajouterObjetSurLaMap(2,2,pot2);
 		
 		System.out.println(jeu.getCarte().scannerPoint(2,2));
 		

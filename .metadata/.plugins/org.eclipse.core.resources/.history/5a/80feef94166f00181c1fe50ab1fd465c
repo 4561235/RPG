@@ -76,7 +76,6 @@ public class Coordonnees {
 		this.lettre=lettre;
 	}
 	
-
 	public String toString()
 	{
 		String objets = "";

@@ -62,8 +62,8 @@ public class TestJeu {
 		Objet pot1 = new Objet("potion");
 		Objet pot2 = new Objet("potion");
 		
-		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot1);
-		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot2);
+		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot1);
+		jeu.getCarte().ajouterObjetSurLaMap(2,2,pot2);
 		
 		System.out.println(jeu.getCarte().scannerPoint(2,2));
 		

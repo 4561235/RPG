@@ -76,8 +76,6 @@ public class Personnage {
 	{
 		boolean leChoixEstFait = true;
 		
-		System.out.println("Choisir un objet a utiliser");
-		
 		for(int i = 0; i < this.listeObjet.size();i++)
 		{
 			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
@@ -141,8 +139,6 @@ public class Personnage {
 	public boolean ramasserObjet(Coordonnees c)
 	{
 		boolean leChoixEstFait = true;
-		
-		System.out.println("Choisir un objet a rammasser");
 		
 		for(int i = 0; i < c.getListeObjet().size();i++)
 		{

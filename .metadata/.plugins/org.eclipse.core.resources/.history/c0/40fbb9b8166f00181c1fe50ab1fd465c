@@ -197,29 +197,10 @@ public class Map {
 	{
 		for(int i=0; i<tailleDuTableau;i++)
 		{
-			if(tableau[i] != null)
+			if(tableau[i].getX()== x && tableau[i].getY() == y )
 			{
-				if(tableau[i].getX()== x && tableau[i].getY() == y )
-				{
-					tableau[i].ajouterObjet(o);
-				}
+				tableau[i].ajouterObjet(o);
 			}
-			
-		}
-	}
-	
-	public void enleverObjetDeLaMap(int x, int y, Objet o)
-	{
-		for(int i=0; i<tailleDuTableau;i++)
-		{
-			if(tableau[i] != null)
-			{
-				if(tableau[i].getX()== x && tableau[i].getY() == y )
-				{
-					tableau[i].enleverObjet(o);
-				}
-			}
-			
 		}
 	}
 	
