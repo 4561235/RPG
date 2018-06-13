@@ -72,12 +72,18 @@ public class Jeu {
 		System.out.println("vous pouvez:");
 		if (deplacer) {System.out.println("d: deplacer");}
 		if (attaquer) {System.out.println("a: attaquer");}
-		if (rammasserObjets) {System.out.println("ram: rammasser objets");} 
-		System.out.println("u: utiliser objet");
+		if (rammasserObjets) {System.out.println("ram: rammasser objets");}
+		if (p.getListeObjet().size()!=0) {System.out.println("u: utiliser objet");}
 		System.out.println("r: rien");
 		
 		String choix = input.next();
-		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram") )) {
+		while (
+			!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram"))||
+			(choix.equals("d") && !(deplacer)) ||
+			(choix.equals("a") && !(attaquer)) ||
+			(choix.equals("ram") && !(rammasserObjets)) ||
+			(choix.equals("u") && p.getListeObjet().size()==0)
+		){
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
 		}

@@ -56,18 +56,6 @@ public class Personnage {
 	}
 	
 	
-	public ArrayList<Objet> getListeObjet() {
-		return listeObjet;
-	}
-
-
-
-	public void setListeObjet(ArrayList<Objet> listeObjet) {
-		this.listeObjet = listeObjet;
-	}
-
-
-
 	public void ajouterObjet(Objet o)
 	{
 		this.listeObjet.add(o);
