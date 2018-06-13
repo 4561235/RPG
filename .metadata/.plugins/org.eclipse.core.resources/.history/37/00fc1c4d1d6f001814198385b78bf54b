@@ -98,7 +98,7 @@ public class Map {
 							if(tableau[i].getX() == a)
 							{
 								//Indication des emplacement des objets
-								if(tableau[i].getListeObjet().size() != 0 && tableau[i].getLettre() == ' ' )
+								if(tableau[i].getListeObjet().size() != null && tableau[i].getLettre() == ' ' );
 								{
 									remplacerSurLaMap(tableau[i].getX(), tableau[i].getY(), 'o', tableau[i].getPersonnage());
 								}

@@ -53,11 +53,11 @@ public class Deplacement{
 	public boolean choixDeplacement(Personnage p, ArrayList<Coordonnees> autour) {
 		
 		//Verification des directions disponibles
-		
-		boolean haut   = (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null);
-		boolean gauche = (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null);
-		boolean droite    = (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null);
-		boolean bas = (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null);
+		//Le 'o' pour faire une exeption pour les objets
+		boolean haut   = (autour.get(0).getLettre() == ' ' || autour.get(0).getLettre() == 'o' && autour.get(0).getPersonnage()==null);
+		boolean gauche = (autour.get(1).getLettre() == ' ' || autour.get(1).getLettre() == 'o' && autour.get(1).getPersonnage()==null);
+		boolean droite = (autour.get(2).getLettre() == ' ' || autour.get(2).getLettre() == 'o' && autour.get(2).getPersonnage()==null);
+		boolean bas    = (autour.get(3).getLettre() == ' ' || autour.get(3).getLettre() == 'o' && autour.get(3).getPersonnage()==null);
 		
 		
 		System.out.println("Vous pouvez aller:");

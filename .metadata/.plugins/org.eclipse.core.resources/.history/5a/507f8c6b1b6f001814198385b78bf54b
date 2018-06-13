@@ -11,7 +11,6 @@ public class TestJeu {
 		
 		System.out.println("longueur de la map:" + jeu.getCarte().getLongueur());
 		System.out.println("largeur de la map:" + jeu.getCarte().getLargeur());
-		System.out.println("--- Creation de la carte ---");
 		
 		//Creation des murs
 		
@@ -47,17 +46,6 @@ public class TestJeu {
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
 		jeu.getCarte().remplacerSurLaMap(5, 8, 'S', c);
 		jeu.getCarte().remplacerSurLaMap(3, 4, 'E', e);
-		
-		Objet pot1 = new Objet("potion");
-		Objet pot2 = new Objet("potion");
-		Objet pot3 = new Objet("potion");
-		Objet pot4 = new Objet("potion");
-		
-		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot1);
-		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot2);
-		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot3);
-		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot4);
-		
 	
 		jeu.getCarte().dessinerMap();
 		
@@ -71,6 +59,11 @@ public class TestJeu {
 		System.out.println("resultat de ma recherche: " +jeu.getCarte().chercherPersonnage(a).toString());
 		*/
 		//test du systeme de choix
+		Objet pot1 = new Objet("potion");
+		Objet pot2 = new Objet("potion");
+		
+		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot1);
+		jeu.getCarte().ajouterObjetSurLaMap(3,2,pot2);
 		
 		System.out.println(jeu.getCarte().scannerPoint(2,2));
 		
