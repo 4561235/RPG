@@ -43,6 +43,8 @@ public class Jeu {
 	
 	public boolean choix(Personnage p) {
 		
+		System.out.println(p.getPa());
+		
 		boolean leChoixEstFait = true;
 		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
 		
@@ -66,7 +68,6 @@ public class Jeu {
 		}
 		*/
 		//
-		System.out.println("Au tour de " + p.getNom() +" !");
 		
 		System.out.println("vous pouvez:");
 		if (deplacer) {System.out.println("d: deplacer");}
@@ -85,11 +86,13 @@ public class Jeu {
 		else if (choix.equals("a")) {leChoixEstFait = this.combat.choixAttaquer(p, autour);}
 		else if (choix.equals("u")) {leChoixEstFait = p.choixObjet();}
 		//else if (choix.equals("ram")) //A DECOMENTER APRES QUE LA METHODE enelverObjet va etre prete
-		else {this.getCarte().dessinerMap();}
+		else {p.setPa(0);}
 		
 		return leChoixEstFait; //Le jouer a vraiment fait un choix
 		
 	}
+	
+	
 	
 	public void partie() {
 		
@@ -100,6 +103,7 @@ public class Jeu {
 		while (enVie) {
 			enVie=false;
 			for (Personnage c:this.participants) {
+				System.out.println("au tour de " + c.getNom() + c.isJoueur());
 				while (c.getHp()>0 && c.getPa()>0) {
 					if (c.isJoueur()) {
 						
@@ -120,13 +124,15 @@ public class Jeu {
 						while (leChoixEstFait == false) //Si c'est true, le joueur a fait un choix donc pas besoin de revenir
 						{
 						leChoixEstFait = this.choix(c);
-						this.carte.dessinerMap();
 						}
+
+						
 						
 					}
 					else if (c.isJoueur()==false) {
 						this.IA(c);
 					}
+					this.carte.dessinerMap();
 					
 				}
 			
@@ -161,6 +167,7 @@ public class Jeu {
 		}
 		
 		if (attaquer) {
+			System.out.println("attaquer");
 			ArrayList<Personnage> attaquable = new ArrayList<Personnage>();
 			for (Coordonnees c:autour) {
 				if (c.getPersonnage()!=null) {attaquable.add(c.getPersonnage());}
@@ -170,6 +177,7 @@ public class Jeu {
 			
 		}
 		else {
+			System.out.println("deplacer");
 			Personnage cible = this.plusProche(p);
 			Coordonnees c = this.pathfinding(p, cible);
 			this.deplacementIA(p, c);
@@ -440,6 +448,7 @@ public class Jeu {
 	}
 	
 	public void deplacementIA(Personnage p, Coordonnees c) {
+		System.out.println("deplacement IA");
 		if (c.getX() == this.carte.chercherPersonnage(p).getX()+1) {
 			this.deplacement.deplacerPersonnage(p, "d");
 		}
@@ -451,6 +460,9 @@ public class Jeu {
 		}
 		else if (c.getY() == this.carte.chercherPersonnage(p).getY()-1) {
 			this.deplacement.deplacerPersonnage(p, "h");
+		}
+		else {
+			System.out.println("WTF");
 		}
 		
 	}
