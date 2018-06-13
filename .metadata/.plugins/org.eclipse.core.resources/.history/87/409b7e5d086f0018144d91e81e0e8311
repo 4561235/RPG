@@ -28,7 +28,7 @@ public class Combat{
 	//Mort: si les Pv d'un personnage sont inf�rieur ou �gal � 0, il est supprim� de la carte
 	
 	public void mort(Personnage p){
-		if (p.getHp()<=0) {System.out.println("IL ES TMORT ------------------3");this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
+		if (p.getHp()<=0) {this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
 	}
 	
 	//M�thode donnant au joueur le choix de la direction dans la quelle attaquer

@@ -35,7 +35,7 @@ public class TestJeu {
 			jeu.getCarte().mettreSurLaMap(x, 9, '#');
 		}
 
-		//cration des personnages et affichage des diff�rents objets
+		//cratuin des personnages et affichage des diff�rents objets
 		
 		Personnage a = new Personnage("Testorius", 10, 3, true);
 		Personnage v = new Personnage("Viktimus", 10, 3, false);

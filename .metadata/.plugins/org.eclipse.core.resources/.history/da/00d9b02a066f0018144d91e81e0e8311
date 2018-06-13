@@ -35,13 +35,14 @@ public class TestJeu {
 			jeu.getCarte().mettreSurLaMap(x, 9, '#');
 		}
 
-		//cration des personnages et affichage des diff�rents objets
+		//cratuin des personnages et affichage des diff�rents objets
 		
 		Personnage a = new Personnage("Testorius", 10, 3, true);
 		Personnage v = new Personnage("Viktimus", 10, 3, false);
 		Personnage e = new Personnage("Ennemius", 10, 3, true);
 		Personnage c = new Personnage("Ciblus", 10, 3, false);
 		
+		jeu.getCarte().remplacerSurLaMap(3, 2, 'P', a);
 		jeu.getCarte().remplacerSurLaMap(2, 2, 'C',null);
 		jeu.getCarte().remplacerSurLaMap(1, 2, 'A',null);
 		jeu.getCarte().remplacerSurLaMap(3, 2, 'T',a);
