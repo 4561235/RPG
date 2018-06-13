@@ -76,7 +76,7 @@ public class Jeu {
 		System.out.println("r: rien");
 		
 		String choix = input.next();
-		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") )) {
+		while (!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram") )) {
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
 		}
@@ -120,6 +120,7 @@ public class Jeu {
 						while (leChoixEstFait == false) //Si c'est true, le joueur a fait un choix donc pas besoin de revenir
 						{
 						leChoixEstFait = this.choix(c);
+						this.carte.dessinerMap();
 						}
 						
 					}
@@ -127,14 +128,14 @@ public class Jeu {
 						this.IA(c);
 					}
 					
-					this.carte.dessinerMap();
 				}
+			
 				c.setPa(c.getPamax());
 			}
+			
 			for (Personnage p:this.participants) {
 				enVie= enVie || (p.isJoueur() && p.getHp()>0);
 			}
-			//this.carte.dessinerMap();
 			System.out.println("nouveau tour");
 			
 		}

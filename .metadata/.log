@@ -1899,6 +1899,7 @@ org.osgi.service.prefs.BackingStoreException: Exception loading preferences from
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+<<<<<<< Updated upstream
 >>>>>>> master
 !SESSION 2018-06-12 17:30:26.121 -----------------------------------------------
 eclipse.buildId=4.7.3.M20180330-0640
@@ -1912,6 +1913,19 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.e
 !MESSAGE Unable to load resource file:/C:/Users/blast/Documents/GitKraken/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 !STACK 0
 org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.xml.sax.SAXParseExceptionpublicId: file:/C:/Users/blast/Documents/GitKraken/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/C:/Users/blast/Documents/GitKraken/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 2; columnNumber: 2; Le balisage du document précédant l'élément racine doit avoir un format correct.
+=======
+!SESSION 2018-06-11 20:06:06.818 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180301-0715
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-06-11 20:06:09.942
+!MESSAGE Unable to load resource file:/D:/Java%20Projet/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+!STACK 0
+org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.xml.sax.SAXParseExceptionpublicId: file:/D:/Java%20Projet/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/D:/Java%20Projet/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 63; columnNumber: 2; Le contenu des éléments doit inclure un balisage ou des caractères au format correct.
+>>>>>>> Stashed changes
 	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.handleDemandLoadException(ResourceSetImpl.java:319)
 	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:278)
 	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:406)
@@ -1937,13 +1951,22 @@ org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException:
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+<<<<<<< Updated upstream
 Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/C:/Users/blast/Documents/GitKraken/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/C:/Users/blast/Documents/GitKraken/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 2; columnNumber: 2; Le balisage du document précédant l'élément racine doit avoir un format correct.
+=======
+Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/D:/Java%20Projet/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/D:/Java%20Projet/RPG/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 63; columnNumber: 2; Le contenu des éléments doit inclure un balisage ou des caractères au format correct.
+>>>>>>> Stashed changes
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(Unknown Source)
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(Unknown Source)
 	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(Unknown Source)
+<<<<<<< Updated upstream
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(Unknown Source)
+=======
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.startOfMarkup(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+>>>>>>> Stashed changes
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
 	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(Unknown Source)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
@@ -1961,7 +1984,11 @@ Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/C:/Users/blast/Documents
 	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
 	... 23 more
 
+<<<<<<< Updated upstream
 !ENTRY org.eclipse.e4.ui.workbench 4 0 2018-06-12 17:30:41.537
+=======
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-06-11 20:06:09.948
+>>>>>>> Stashed changes
 !MESSAGE The persisted application model has no top-level window. Reinitializing with the default application model.
 !STACK 0
 java.lang.Exception
@@ -1986,6 +2013,7 @@ java.lang.Exception
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
 
+<<<<<<< Updated upstream
 !ENTRY org.eclipse.ui 1 1 2018-06-12 17:30:41.790
 !MESSAGE Workbench migration started
 
@@ -2100,3 +2128,10 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+=======
+!ENTRY org.eclipse.ui 1 1 2018-06-11 20:06:10.209
+!MESSAGE Workbench migration started
+
+!ENTRY org.eclipse.ui 1 1 2018-06-11 20:06:11.091
+!MESSAGE Workbench migration finished
+>>>>>>> Stashed changes
