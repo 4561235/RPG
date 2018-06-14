@@ -1,0 +1,249 @@
+import java.util.ArrayList;
+
+public class Dijkstra {
+	private int[] metrique=new int[500];
+	private boolean[] verifier=new boolean[500];
+	int taille;
+	
+	public Dijkstra() {
+		this.taille=500;
+	}
+	
+	public Dijkstra(int i) {
+		if (i<=500) {
+			this.taille=i;
+		}
+		else {
+			this.taille=500;
+		}
+	}
+	
+	private Dijkstra(Personnage p, Map m) {
+		
+		//le tableau de l'algorithme de Dijkstra
+		int[]metrique= new int[m.getLongueur()*m.getLargeur()];
+		
+		// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
+		
+		//tableau de bool permet de savoir si une case a ddeja ete verifier ou non. Si non, on applique l'algorithme
+		boolean[] verifier=new boolean[m.getLongueur()*m.getLargeur()];
+		
+		//on rempli le tableau de valeurs maximales
+		for (int i=0; i<m.getLongueur(); i++) {
+			for (int j=0; j<m.getLargeur(); j++) {
+				metrique[m.getICoordonnees(i, j)]=99;
+				if (m.getTableau() [m.getICoordonnees(i, j)] != null && m.getTableau() [m.getICoordonnees(i, j)] .getLettre() =='#') {
+					verifier[m.getICoordonnees(i, j)]=true;
+				}
+			}
+		}
+		
+		
+		//emplacement dans la carte du personnage actuel
+		
+		
+		int iActuel=m.getICoordonnees(m.chercherPersonnage(p).getX(), m.chercherPersonnage(p).getY());
+		metrique[iActuel]=0;
+		verifier[iActuel]=true;
+		
+		boolean fini = false;
+		
+		
+		//recuperation des 4 cases autour de la case courante
+		ArrayList<Coordonnees> autour = m.scannerAutourCoordonnee(m.chercherPersonnage(p).getX(), m.chercherPersonnage(p).getY());
+		
+		
+		
+		while(!(fini)) {
+			//pour les 4 cases autour, on calcul la metrique
+			for (Coordonnees c: autour) {
+				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
+				if (c!=null){
+					if ( c.getLettre()!='#') {
+						if (verifier[m.getICoordonnees(c.getX(), c.getY())]==false){
+							if(metrique [iActuel]+1 < metrique [m.getICoordonnees(c.getX(), c.getY())]) {
+								metrique[m.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
+									
+								
+							}		
+						}			
+					}				
+				}
+			}
+			
+			//on determine la prochaine case a analyser
+			
+			int metriqueMax=99999999;
+			int iMetriqueMax=999;
+			int x = 100;
+			int y = 100;
+			
+			for (int i=0; i<m.getLongueur(); i++) {
+				for (int j=0; j<m.getLargeur(); j++) {
+					if (verifier[m.getICoordonnees(i, j)]==false){
+						if (metrique[m.getICoordonnees(i, j)]<metriqueMax) {
+							iMetriqueMax=m.getICoordonnees(i, j);
+							metriqueMax=metrique[iMetriqueMax];
+							
+							y=j;
+							x=i;
+						}
+					}
+				}
+			}
+			
+			//la prochaine case est la premi�re case non-verifier avec la metrique la plus faible
+			autour = m.scannerAutourCoordonnee(x, y);
+			verifier[m.getICoordonnees(x, y)]=true;
+			iActuel=m.getICoordonnees(x, y);
+			fini = true;
+			
+			for (int i=0; i<m.getLongueur() && fini; i++) {
+				for (int j=0; j<m.getLargeur() && fini; j++) {
+					if (verifier[m.getICoordonnees(i, j)]==false) {
+						fini=false;
+					}
+				}
+			}
+			
+		}
+		/*
+		System.out.println("fin");
+		
+	
+		
+		System.out.println("metrique:");
+		for (int i = 0; i<10; i++){
+			String s = "";
+			for (int j = 0; j<10; j++){
+				if (metrique[i*10+j]==99){ s+="## ";}
+				else{
+					s+=(metrique[i*10+j]) + " ";
+					if (metrique[i*10+j]<10)
+						s+= " ";
+				}	
+			}
+			System.out.println(s);
+		}
+		*/
+		
+		return metrique;
+	}
+
+	private Coordonnees[] dijkstra(Personnage p, Personnage cible) {
+		
+		//le tableau de l'algorithme de Dijkstra
+		int[]metrique= new int[m.getLongueur()*m.getLargeur()];
+		
+		// pour se rendre a l'emplacementi*10+j, il faut passer par la coordonnee stocker
+		Coordonnees[] chemin=new Coordonnees[m.getLongueur()*m.getLargeur()];	
+		
+		//tableau de bool permet de savoir si une case a ddeja ete verifier ou non. Si non, on applique l'algorithme
+		boolean[] verifier=new boolean[m.getLongueur()*m.getLargeur()];
+		
+		//on rempli le tableau de valeurs maximales
+		for (int i=0; i<m.getLongueur(); i++) {
+			for (int j=0; j<m.getLargeur(); j++) {
+				metrique[m.getICoordonnees(i, j)]=99;
+				chemin[m.getICoordonnees(i, j)]=new Coordonnees(i, j, ' ',null);
+				if (m.getTableau() [m.getICoordonnees(i, j)] != null && m.getTableau() [m.getICoordonnees(i, j)] .getLettre() =='#') {
+					verifier[m.getICoordonnees(i, j)]=true;
+				}
+			}
+		}
+		
+		
+		//emplacement dans la carte du personnage actuel
+		
+		
+		int iActuel=m.getICoordonnees(m.chercherPersonnage(p).getX(), m.chercherPersonnage(p).getY());
+		metrique[iActuel]=0;
+		verifier[iActuel]=true;
+		
+		boolean fini = false;
+		
+		
+		//recuperation des 4 cases autour de la case courante
+		ArrayList<Coordonnees> autour = m.scannerAutourCoordonnee(m.chercherPersonnage(p).getX(), m.chercherPersonnage(p).getY());
+		
+		
+		
+		while(!(fini)) {
+			//pour les 4 cases autour, on calcul la metrique
+			for (Coordonnees c: autour) {
+				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
+				if (c!=null){
+					if ( c.getPersonnage() == null || c.getPersonnage().equals(cible)) {
+						if ( c.getLettre()==' ' || c.getLettre() == m.chercherPersonnage(cible).getLettre()) {
+							if (verifier[m.getICoordonnees(c.getX(), c.getY())]==false){
+								if(metrique [iActuel]+1 < metrique [m.getICoordonnees(c.getX(), c.getY())]) {
+									metrique[m.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
+									chemin[m.getICoordonnees(c.getX(), c.getY())].setX(iActuel%10);
+									chemin[m.getICoordonnees(c.getX(), c.getY())].setY(iActuel/10);
+									
+								}
+							}		
+						}			
+					}				
+				}
+			}
+			
+			//on determine la prochaine case a analyser
+			
+			int metriqueMax=99999999;
+			int iMetriqueMax=999;
+			int x = 100;
+			int y = 100;
+			
+			for (int i=0; i<m.getLongueur(); i++) {
+				for (int j=0; j<m.getLargeur(); j++) {
+					if (verifier[m.getICoordonnees(i, j)]==false){
+						if (metrique[m.getICoordonnees(i, j)]<metriqueMax) {
+							iMetriqueMax=m.getICoordonnees(i, j);
+							metriqueMax=metrique[iMetriqueMax];
+							
+							y=j;
+							x=i;
+						}
+					}
+				}
+			}
+			
+			//la prochaine case est la premi�re case non-verifier avec la metrique la plus faible
+			autour = m.scannerAutourCoordonnee(x, y);
+			verifier[m.getICoordonnees(x, y)]=true;
+			iActuel=m.getICoordonnees(x, y);
+			fini = true;
+			
+			for (int i=0; i<m.getLongueur() && fini; i++) {
+				for (int j=0; j<m.getLargeur() && fini; j++) {
+					if (verifier[m.getICoordonnees(i, j)]==false) {
+						fini=false;
+					}
+				}
+			}
+		}
+		/*
+		System.out.println("fin");
+		
+	
+		
+		System.out.println("metrique:");
+		for (int i = 0; i<10; i++){
+			String s = "";
+			for (int j = 0; j<10; j++){
+				if (metrique[i*10+j]==99){ s+="## ";}
+				else{
+					s+=(metrique[i*10+j]) + " ";
+					if (metrique[i*10+j]<10)
+						s+= " ";
+				}	
+			}
+			System.out.println(s);
+		}
+		*/
+		
+		return chemin;
+	}
+	
+}

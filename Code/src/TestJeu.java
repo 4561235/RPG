@@ -13,28 +13,11 @@ public class TestJeu {
 		System.out.println("largeur de la map:" + jeu.getCarte().getLargeur());
 		System.out.println("--- Creation de la carte ---");
 		
-		//Creation des murs
+		//Creation des de la carte
 		
-		for(int x=0;x<10;x++)
-		{
-			jeu.getCarte().mettreSurLaMap(x, 0, '#');
-		}
+		jeu.getCarte().genererCarte();
 		
 		
-		for(int y=1;y<9;y++)
-		{
-			jeu.getCarte().mettreSurLaMap(0, y, '#');
-			for(int x=1;x<9;x++)
-			{
-				jeu.getCarte().mettreSurLaMap(x, y, ' ');
-			}
-			jeu.getCarte().mettreSurLaMap(9, y, '#');
-		}
-		
-		for(int x=0;x<10;x++)
-		{
-			jeu.getCarte().mettreSurLaMap(x, 9, '#');
-		}
 
 		//cration des personnages et affichage des diff�rents objets
 		

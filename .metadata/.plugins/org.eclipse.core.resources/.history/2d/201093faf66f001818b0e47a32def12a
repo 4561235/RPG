@@ -1,0 +1,10 @@
+
+public class Dijkstra {
+	private int[] metrique=new int[500];
+	private boolean[] verifier=new boolean[500];
+	
+	public Dijkstra() {
+	}
+	
+	
+}

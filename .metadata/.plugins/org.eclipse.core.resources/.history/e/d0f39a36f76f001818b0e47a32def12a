@@ -1,0 +1,21 @@
+
+public class Dijkstra {
+	private int[] metrique=new int[500];
+	private boolean[] verifier=new boolean[500];
+	int taille;
+	
+	public Dijkstra() {
+		this.taille=500;
+	}
+	
+	public Dijkstra(int i) {
+		if (i<=500) {
+			this.taille=i;
+		}
+		else {
+			this.taille=500;
+		}
+	}
+	
+	
+}

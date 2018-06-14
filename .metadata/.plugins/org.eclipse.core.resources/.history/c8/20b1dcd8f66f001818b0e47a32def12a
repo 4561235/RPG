@@ -1,0 +1,11 @@
+
+public class Dijkstra {
+	private int[] metrique;
+	private boolean[] verifier;
+	
+	public Dijkstra() {
+		this.metrique[]= new int[100];
+	}
+	
+	
+}
