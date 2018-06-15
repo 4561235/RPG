@@ -35,6 +35,11 @@ public class TestJeu {
 		Objet pot2 = new Objet("potion");
 		Objet pot3 = new Objet("potion");
 		
+		Objet pot4 = new Objet("potion");
+		v.ajouterObjet(pot4);
+		
+		
+		
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot1);
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot2);
 		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot3);

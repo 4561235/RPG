@@ -20,7 +20,7 @@ public class Combat{
 		int dmg =(int) (Math.random()*3+3);
 		System.out.println(dmg+"\npv avant: "+defenseur.getHp());
 		defenseur.setHp(defenseur.getHp()-dmg);
-		System.out.println("pv apres" + defenseur.getHp());
+		System.out.println("pv apres: " + defenseur.getHp());
 		this.mort(defenseur);
 		attaquant.setPa(attaquant.getPa()-1);
 	}
@@ -28,7 +28,22 @@ public class Combat{
 	//Mort: si les Pv d'un personnage sont inf�rieur ou �gal � 0, il est supprim� de la carte
 	
 	public void mort(Personnage p){
-		if (p.getHp()<=0) {System.out.println("IL ES TMORT ------------------3");this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
+		
+		//Lacher les objets apres la mort
+		Coordonnees c = carte.chercherPersonnage(p);
+		
+		for(int i = 0; i < p.getListeObjet().size(); i++)
+		{
+			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getListeObjet().get(i) );
+			p.getListeObjet().remove(i);
+		}
+		
+				
+		//Tuer le personnage
+		if (p.getHp()<=0) {System.out.println("IL ES TMORT ------------------3");
+		this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
+		
+	
 	}
 	
 	//M�thode donnant au joueur le choix de la direction dans la quelle attaquer
