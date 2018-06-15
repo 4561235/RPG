@@ -73,16 +73,80 @@ public class Personnage {
 		this.listeObjet.add(o);
 	}
 	
-	public void enleverObjet(Objet o)
+	public void enleverObjet(int index)
+	{	
+		this.listeObjet.remove(index);	
+	}
+	
+	public boolean lacherObjet(Map m)
 	{
+		boolean leChoixEstFait = true;
+		
+		System.out.println("Choisir un objet a lacher");
+		
 		for(int i = 0; i < this.listeObjet.size();i++)
 		{
-			if(o.getNom().equals(this.listeObjet.get(i).getNom()))
-			{
-				this.listeObjet.remove(i);
-			}
+			System.out.println(i +": " +this.listeObjet.get(i).getNom() );
 		}
+		System.out.println("a: annuler");
+		
+		String action = this.input.next(); 
+		int nombreChoix;
+		
+		try
+		{
+			nombreChoix = Integer.parseInt(action);
+		}
+		catch(Exception e)
+		{
+			nombreChoix = -1;
+		}
+		
+		while(!(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)) 
+		{
+			
+			try
+			{
+				nombreChoix = Integer.parseInt(action);
+				if( nombreChoix <= this.listeObjet.size()-1)
+				{
+					break;
+				}
+			}
+			catch(Exception e)
+			{
+				nombreChoix = -1;
+			}
+			
+			if(action.equals("a"))
+			{
+				return false;
+			}
+			
+			System.out.println("Veuillez choisir un objet valide");
+			action = this.input.next();
+			
+		} 
+		
+		//effet de lacher
+		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)
+		{
+			Coordonnees c = m.chercherPersonnage(this);
+			c.ajouterObjet(this.listeObjet.get(nombreChoix));
+			this.enleverObjet(nombreChoix);
+			
+		}
+		
+		if(action.equals("a"))
+		{
+			return false;
+		}
+		
+		return leChoixEstFait;
+		
 	}
+	
+	
 	
 	public boolean choixObjet()
 	{
@@ -137,7 +201,7 @@ public class Personnage {
 		if(nombreChoix >= 0 && nombreChoix <= this.listeObjet.size()-1)
 		{
 			this.listeObjet.get(nombreChoix).activerObjet(this);
-			this.enleverObjet(listeObjet.get(nombreChoix));
+			this.enleverObjet(nombreChoix);
 			
 		}
 		

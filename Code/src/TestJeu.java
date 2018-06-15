@@ -34,12 +34,12 @@ public class TestJeu {
 		Objet pot1 = new Objet("potion");
 		Objet pot2 = new Objet("potion");
 		Objet pot3 = new Objet("potion");
-		Objet pot4 = new Objet("potion");
 		
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot1);
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot2);
 		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot3);
-		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot4);
+		
+		System.out.println(jeu.getCarte().scannerPoint(0,0));
 		
 	
 		jeu.getCarte().dessinerMap();

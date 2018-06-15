@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="12" version="2.0">
+<workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
 <window height="735" maximized="true" width="682" x="683" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -40,33 +40,33 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Combat.java" partName="Combat.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Combat.java" title="Combat.java" tooltip="Code/src/Combat.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Combat.java" partName="Combat.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Combat.java" title="Combat.java" tooltip="Code/src/Combat.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Combat.java"/>
-<editorState selectionHorizontalPixel="224" selectionLength="0" selectionOffset="0" selectionTopPixel="65"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="836" selectionTopPixel="255"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Coordonnees.java" partName="Coordonnees.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Coordonnees.java" title="Coordonnees.java" tooltip="Code/src/Coordonnees.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Coordonnees.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="642" selectionTopPixel="1059"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="262"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Map.java" partName="Map.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Map.java" title="Map.java" tooltip="Code/src/Map.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Map.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4879" selectionTopPixel="2964"/>
+<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="14346" selectionTopPixel="7959"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestJeu.java" partName="TestJeu.java" path="/home/mateusz/Projet_Java/RPG/Code/src/TestJeu.java" title="TestJeu.java" tooltip="Code/src/TestJeu.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/TestJeu.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1886" selectionTopPixel="447"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1339" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Objet.java" partName="Objet.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Objet.java" title="Objet.java" tooltip="Code/src/Objet.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Objet.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Jeu.java" partName="Jeu.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Jeu.java" title="Jeu.java" tooltip="Code/src/Jeu.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Jeu.java" partName="Jeu.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Jeu.java" title="Jeu.java" tooltip="Code/src/Jeu.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Jeu.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2491" selectionTopPixel="873"/>
+<editorState selectionHorizontalPixel="7" selectionLength="0" selectionOffset="2728" selectionTopPixel="3022"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Personnage.java" partName="Personnage.java" path="/home/mateusz/Projet_Java/RPG/Code/src/Personnage.java" title="Personnage.java" tooltip="Code/src/Personnage.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Code/src/Personnage.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="488" selectionOffset="1595" selectionTopPixel="1179"/>
+<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="1509" selectionTopPixel="1493"/>
 </editor>
 </editors>
 <views>
@@ -184,162 +184,163 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/TestJeu.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Coordonnees.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Map.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Objet.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Jeu.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Objet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/TestJeu.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Map.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Personnage.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Coordonnees.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Code/src/Combat.java"/>
 </editors>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="2001" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4289" y="0"/>
-</item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="2001" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="645" y="0"/>
-</item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="2001" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="645" y="0"/>
-</item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="2001" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4540" y="0"/>
-</item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="2001" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4540" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="645" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="609" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="642" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4540" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4849" y="0"/>
-</item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="1886" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="3702" y="0"/>
-</item>
-<item historyLabel="Objet.java" index="3">
+<item historyLabel="Objet.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="1886" y="0"/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1742" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="3702" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="1830" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4849" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="1830" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="1901" y="0"/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="642" y="0"/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1742" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="1901" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="2801" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4879" y="0"/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1742" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="2799" y="0"/>
-</item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4879" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="2799" y="0"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="4056" y="0"/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1464" y="123"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position/>
-</item>
-<item historyLabel="Coordonnees.java" index="1">
-<position info="not_deleted" x="642" y="0"/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1464" y="123"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position/>
-</item>
-<item historyLabel="Personnage.java" index="5">
-<position info="not_deleted" x="1595" y="488"/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position/>
-</item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="3931" y="0"/>
-</item>
-<item historyLabel="Objet.java" index="3">
+<item historyLabel="Objet.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TestJeu.java" index="0">
-<position info="not_deleted" x="1886" y="0"/>
+<item historyLabel="TestJeu.java" index="2">
+<position info="not_deleted" x="1020" y="0"/>
 </item>
-<item historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="4056" y="0"/>
+<item historyLabel="TestJeu.java" index="2">
+<position info="not_deleted" x="1319" y="0"/>
 </item>
-<item historyLabel="Map.java" index="2">
-<position info="not_deleted" x="4879" y="0"/>
+<item historyLabel="TestJeu.java" index="2">
+<position info="not_deleted" x="1337" y="0"/>
 </item>
-<item active="true" historyLabel="Jeu.java" index="4">
-<position info="not_deleted" x="4056" y="0"/>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="14479" y="0"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="12448" y="12"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="6155" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1245" y="13"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1406" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2798" y="10"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1421" y="12"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2798" y="10"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="3878" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1421" y="12"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1443" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2798" y="10"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="3871" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1421" y="12"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="396" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1421" y="12"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1526" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2629" y="0"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="14463" y="0"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2629" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2573" y="0"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Coordonnees.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2629" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2627" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2665" y="0"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="3458" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2665" y="0"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="3458" y="0"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="2731" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="2665" y="0"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1509" y="11"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="2728" y="0"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="14351" y="0"/>
+</item>
+<item historyLabel="Jeu.java" index="0">
+<position info="not_deleted" x="2728" y="0"/>
+</item>
+<item historyLabel="Map.java" index="3">
+<position info="not_deleted" x="14346" y="5"/>
+</item>
+<item historyLabel="Personnage.java" index="4">
+<position info="not_deleted" x="1509" y="11"/>
+</item>
+<item historyLabel="Combat.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Combat.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="Combat.java" index="6">
+<position info="not_deleted" x="771" y="4"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -347,13 +348,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-<trimItem IMemento.internal.id="bottomLeft"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>

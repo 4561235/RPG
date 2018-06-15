@@ -71,16 +71,21 @@ public class Jeu {
 		if (deplacer) {System.out.println("d: deplacer");}
 		if (attaquer) {System.out.println("a: attaquer");}
 		if (rammasserObjets) {System.out.println("ram: rammasser objets");}
-		if (p.getListeObjet().size()!=0) {System.out.println("u: utiliser objet");}
+		if (p.getListeObjet().size() != 0) {System.out.println("u: utiliser objet");}
+		if (p.getListeObjet().size() != 0) {System.out.println("l: lacher des objets");;}
+		
 		System.out.println("r: rien");
 		
 		String choix = input.next();
 		while (
-			!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram"))||
+			!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram")||
+			choix.equals("l")) ||
 			(choix.equals("d") && !(deplacer)) ||
 			(choix.equals("a") && !(attaquer)) ||
 			(choix.equals("ram") && !(rammasserObjets)) ||
-			(choix.equals("u") && p.getListeObjet().size()==0)
+			(choix.equals("u") && p.getListeObjet().size()==0)||
+			(choix.equals("l") && p.getListeObjet().size()==0)
+			
 		){
 			System.out.println("choisissez un choix valide");
 			choix = input.next();
@@ -90,6 +95,7 @@ public class Jeu {
 		else if (choix.equals("a")) {leChoixEstFait = this.combat.choixAttaquer(p, autour);}
 		else if (choix.equals("u")) {leChoixEstFait = p.choixObjet();}
 		else if (choix.equals("ram")) {leChoixEstFait = p.ramasserObjet(c);}
+		else if (choix.equals("l")) {leChoixEstFait = p.lacherObjet(this.carte);}
 		else {p.setPa(0);}
 		
 		return leChoixEstFait; //Le jouer a vraiment fait un choix

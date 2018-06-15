@@ -522,9 +522,11 @@ public class Map {
 					
 					int rand= (int) (Math.random()*14);
 					
-					if ((obstacle && (int) (rand) < 4) || rand == 0) { 						//on place aléatoirement des obstacle sur la map, la chance est plus elever si il y a u obstacle a cote
+					if ((obstacle && (int) (rand) < 4) || rand == 0) { 						//on place alï¿½atoirement des obstacle sur la map, la chance est plus elever si il y a u obstacle a cote
 						this.remplacerSurLaMap(i, j, 'X', null);
 					}
+					
+					
 				}
 			}
 		}
@@ -550,12 +552,15 @@ public class Map {
 						}
 					}
 					
+					
+					
 					this.remplacerSurLaMap(i, j, ' ', null);
 				}
 			}
 		}
 		
-		
+		remplacerSurLaMap(0,0,'#',null);
 		
 	}
+	
 }
