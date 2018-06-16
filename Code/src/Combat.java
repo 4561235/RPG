@@ -17,15 +17,33 @@ public class Combat{
 	//attaquer inflige des degats entre 3 et 5 de maniï¿½re alï¿½atoire
 	
 	public void attaquer(Personnage attaquant, Personnage defenseur) {
-		int dmg =(int) (Math.random()*3+3);
-		System.out.println(dmg+"\npv avant: "+defenseur.getHp());
-		defenseur.setHp(defenseur.getHp()-dmg);
-		System.out.println("pv apres: " + defenseur.getHp());
-		this.mort(defenseur);
+		
+		int dmg = 0;
+		
+		if (attaquant.getArme()!=null) {
+			dmg += attaquant.getArme().getDegas();
+		}
+		
+		if (defenseur.getArmure() != null) {
+			dmg -= defenseur.getArmure().getDefence();
+		}
+		
+		dmg += (int) (Math.random()*3+1);
+		
+		if (dmg>0) {
+			System.out.println("dmg = " + dmg + "\npv avant: "+defenseur.getHp());
+			defenseur.setHp(defenseur.getHp()-dmg);
+			System.out.println("pv apres: " + defenseur.getHp());
+			this.mort(defenseur);
+		}
+		
+		else {
+			System.out.println("Ce n'est pas très efficace...");
+		}
 		attaquant.setPa(attaquant.getPa()-1);
 	}
 	
-	//Mort: si les Pv d'un personnage sont infï¿½rieur ou ï¿½gal ï¿½ 0, il est supprimï¿½ de la carte
+	//Mort: si les Pv d'un personnage sont inferieur ou egal a 0, il est supprime de la carte
 	
 	public void mort(Personnage p){
 		
@@ -50,7 +68,7 @@ public class Combat{
 		
 				
 		//Tuer le personnage
-		if (p.getHp()<=0) {System.out.println("IL ES TMORT ------------------3");
+		if (p.getHp()<=0) {
 		this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
 		
 	

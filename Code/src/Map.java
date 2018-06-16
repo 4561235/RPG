@@ -297,7 +297,7 @@ public class Map {
 			for (Coordonnees c: autour) {
 				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
 				if (c!=null){
-					if ( c.getLettre()!='#') {
+					if ( c.getLettre()!='#' && c.getLettre()!='X') {
 						if (verifier[this.getICoordonnees(c.getX(), c.getY())]==false){
 							if(metrique [iActuel]+1 < metrique [this.getICoordonnees(c.getX(), c.getY())]) {
 								metrique[this.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
@@ -412,7 +412,7 @@ public class Map {
 				//Si la metrique de la case actuelle +1 est inferieur a la metrique de la case a cote, on la remplace
 				if (c!=null){
 					if ( c.getPersonnage() == null || c.getPersonnage().equals(cible)) {
-						if ( c.getLettre()==' ' || c.getLettre() == this.chercherPersonnage(cible).getLettre()) {
+						if ( c.getLettre()==' ' || c.getLettre()=='o' || c.getLettre() == this.chercherPersonnage(cible).getLettre()) {
 							if (verifier[this.getICoordonnees(c.getX(), c.getY())]==false){
 								if(metrique [iActuel]+1 < metrique [this.getICoordonnees(c.getX(), c.getY())]) {
 									metrique[this.getICoordonnees(c.getX(), c.getY())]=metrique[iActuel]+1;
@@ -484,8 +484,8 @@ public class Map {
 		return chemin;
 	}
 	
-	
 	public void genererCarte() {
+		
 		
 		//creation des murs
 		for(int x=0;x<10;x++)
@@ -522,7 +522,7 @@ public class Map {
 					
 					int rand= (int) (Math.random()*14);
 					
-					if ((obstacle && (int) (rand) < 4) || rand == 0) { 						//on place al�atoirement des obstacle sur la map, la chance est plus elever si il y a u obstacle a cote
+					if ((obstacle && (int) (rand) < 4) || rand == 0) { 						//on place aleatoirement des obstacle sur la map, la chance est plus elever si il y a u obstacle a cote
 						this.remplacerSurLaMap(i, j, 'X', null);
 					}
 					
@@ -530,6 +530,8 @@ public class Map {
 				}
 			}
 		}
+		
+		this.dessinerMap();
 		
 		//verification d'une carte valide
 		
@@ -539,28 +541,38 @@ public class Map {
 		
 		for (int i = 0; i< this.longueur && !(erreur); i++) {
 			for (int j = 0; j<this.largeur && !(erreur); j++) {
-				if (this.getCoordonnees(this.getICoordonnees(i, j)).getLettre()!='#' || this.getCoordonnees(this.getICoordonnees(i, j)).getLettre()!='X') {
+				if (this.getCoordonnees(this.getICoordonnees(i, j)).getLettre()!='#' && this.getCoordonnees(this.getICoordonnees(i, j)).getLettre()!='X') {
 					
 					this.remplacerSurLaMap(i, j, 't', p);
 					int[] metrique = this.dijkstra(p);
 					
 					for (int a = 0; a<this.longueur && !(erreur); a++) {
 						for (int b = 0; b<this.largeur && !(erreur); b++) {
-							if (metrique[a*this.longueur+b] == 99 && this.getCoordonnees(this.getICoordonnees(a, b)).getLettre()==' ') {
+							if (metrique[this.getICoordonnees(a, b)] == 99 && this.getCoordonnees(this.getICoordonnees(a, b)).getLettre()==' ') {
 								erreur=true;
 							}
 						}
 					}
-					
-					
-					
 					this.remplacerSurLaMap(i, j, ' ', null);
 				}
 			}
 		}
 		
-		remplacerSurLaMap(0,0,'#',null);
+		System.out.println(erreur);
+		
+		if (erreur) {
+			this.viderCarte();
+			this.genererCarte();
+		}
+		
+		//remplacerSurLaMap(0,0,'#',null);
 		
 	}
 	
+	public void viderCarte() {
+		for (int i = 0; i<500; i++) {
+			this.tableau[i]=null;
+		}
+	}
+
 }
