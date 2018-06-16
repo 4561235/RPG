@@ -37,6 +37,16 @@ public class Combat{
 			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getListeObjet().get(i) );
 			p.getListeObjet().remove(i);
 		}
+		if(p.getArme() != null)
+		{
+			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArme() );
+			p.setArme(null);
+		}
+		if(p.getArmure() != null)
+		{
+			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArmure() );
+			p.setArmure(null);
+		}
 		
 				
 		//Tuer le personnage

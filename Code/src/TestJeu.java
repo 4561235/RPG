@@ -8,43 +8,44 @@ public class TestJeu {
 		Jeu jeu = new Jeu(10, 10); //creation d'un objet Jeu avec une carte de 10 par 10
 		
 		
-		
-		System.out.println("longueur de la map:" + jeu.getCarte().getLongueur());
+		/*System.out.println("longueur de la map:" + jeu.getCarte().getLongueur());
 		System.out.println("largeur de la map:" + jeu.getCarte().getLargeur());
-		System.out.println("--- Creation de la carte ---");
+		*/
 		
 		//Creation des de la carte
 		
 		jeu.getCarte().genererCarte();
 		
-		
+		//menu du jeu
+		jeu.menu();
 
 		//cration des personnages et affichage des diff�rents objets
 		
-		Personnage a = new Personnage("Testorius", 10, 3, true);
 		Personnage v = new Personnage("Viktimus", 10, 3, false);
-		Personnage e = new Personnage("Ennemius", 10, 3, true);
 		Personnage c = new Personnage("Ciblus", 10, 3, false);
 		
-		jeu.getCarte().remplacerSurLaMap(3, 2, 'T',a);
 		jeu.getCarte().remplacerSurLaMap(3, 3, 'V', v);
 		jeu.getCarte().remplacerSurLaMap(5, 8, 'S', c);
-		jeu.getCarte().remplacerSurLaMap(3, 4, 'E', e);
+		
+		Objet pot4 = new Objet("potion");
+		v.ajouterObjet(pot4);
+		
+		for(int i = 0; i< 3; i++)
+		{
+			Objet booster = new Objet("boosterPA");
+			jeu.getCarte().ajouterObjetSurLaMap(4,2,booster);
+		}
+		
 		
 		Objet pot1 = new Objet("potion");
 		Objet pot2 = new Objet("potion");
 		Objet pot3 = new Objet("potion");
 		
-		Objet pot4 = new Objet("potion");
-		v.ajouterObjet(pot4);
-		
-		
-		
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot1);
 		jeu.getCarte().ajouterObjetSurLaMap(4,2,pot2);
 		jeu.getCarte().ajouterObjetSurLaMap(1,2,pot3);
 		
-		System.out.println(jeu.getCarte().scannerPoint(0,0));
+		//System.out.println(jeu.getCarte().scannerPoint(0,0));
 		
 	
 		jeu.getCarte().dessinerMap();
@@ -60,7 +61,7 @@ public class TestJeu {
 		*/
 		//test du systeme de choix
 		
-		System.out.println(jeu.getCarte().scannerPoint(2,2));
+		//System.out.println(jeu.getCarte().scannerPoint(2,2));
 		
 		
 		jeu.partie();

@@ -1,0 +1,96 @@
+
+public class Objet {
+	
+	//tableau des objets disponible
+	private String[] objets = {"potion","boosterPA"};
+	
+	private String nom;
+	
+	
+	public Objet(String s)
+	{
+		if(objetValide(s))
+		{
+			this.nom=s;
+		}
+		else
+		{
+			System.out.println("L'OBJET N'EXISTE PAS!");
+		}
+	}
+	
+	//On regarde si l'objet mis en parametre est dans le tableau d'objet valide
+	public boolean objetValide(String s)
+	{
+		for(int i = 0; i < this.objets.length; i++)
+		{
+			System.out.println("ite: " +i +" " +objets[i]);
+			if(!(s.equals(objets[i])))
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	//C'est ici que on va mettre les effet des objets
+	public void activerObjet(Personnage p)
+	{
+		//Effet de la potion
+		if(this.nom.equals("potion"))
+		{
+			activerPotion(p);
+		}
+		else if (this.nom.equals("boosterPA"))
+		{
+			activerBoosterPA(p);
+		}
+	}
+	
+	public void activerBoosterPA(Personnage p)
+	{
+		System.out.println("PA avant: " +p.getPa());
+		p.setPa(p.getPa() + 1);
+		
+		if( p.getPamax() < p.getPa() )
+		{
+			p.setPa(p.getPamax());
+			System.out.println("PA apres: " +p.getPa());
+		}
+		else
+		{
+			System.out.println("PA apres: " +p.getPa());
+		}
+	}
+	
+	
+	public void activerPotion(Personnage p)
+	{
+		System.out.println("HP avant: " +p.getHp());
+		p.setHp(p.getHp() + 4);
+		System.out.println("Potion utilise! + 4 HP");
+		
+		int hpmax = p.getHpmax();
+		int hp =  p.getHp();
+		
+		if(hpmax < hp)
+		{
+			p.setHp(p.getHpmax());
+			System.out.println("HP apres: " +p.getHp());
+		}
+		else
+		{
+			System.out.println("HP apres: " +p.getHp());
+		}
+	}
+
+	
+	
+	public String getNom()
+	{
+		return this.nom;
+	}
+	
+	
+}

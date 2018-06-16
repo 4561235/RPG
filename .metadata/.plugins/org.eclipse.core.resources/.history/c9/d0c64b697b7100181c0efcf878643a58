@@ -1,0 +1,450 @@
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Jeu {
+
+	//C'est dans cette classe ou il y aurra le main et les fonction PRIVEE pour faire le calcul de degas ect.
+	private Scanner input = new Scanner(System.in);
+	
+	private Map carte;
+	
+	private Deplacement deplacement;
+	private Combat combat;
+	
+	private ArrayList<Personnage> participants;
+	
+	//constructeurs
+	
+	public Jeu() {
+		this.carte=new Map();
+		this.combat=new Combat(carte);
+		this.deplacement=new Deplacement(carte);
+		
+	}
+	
+	public Jeu (int hauteur, int largeur) {
+		this.carte=new Map (hauteur, largeur);
+		this.combat=new Combat(carte);
+		this.deplacement=new Deplacement(carte);
+	}
+
+	public Map getCarte() {
+		return this.carte;
+	}
+	
+	public void setCarte(Map m) {
+		this.carte=m;
+	}
+
+	public boolean choix(Personnage p) {
+		
+		System.out.println(p.getPa());
+		
+		boolean leChoixEstFait = true;
+		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		
+		boolean deplacer =  (autour.get(0).getLettre() == ' ' && autour.get(0).getPersonnage()==null) ||
+			                (autour.get(1).getLettre() == ' ' && autour.get(1).getPersonnage()==null) ||
+			                (autour.get(2).getLettre() == ' ' && autour.get(2).getPersonnage()==null) ||
+			                (autour.get(3).getLettre() == ' ' && autour.get(3).getPersonnage()==null); 
+		
+		boolean attaquer =  autour.get(0).getPersonnage()!=null ||
+							autour.get(1).getPersonnage()!=null ||
+							autour.get(2).getPersonnage()!=null ||
+							autour.get(3).getPersonnage()!=null;
+		
+		//Pour voir si il y a des objets a l'endroit du personnage
+		Coordonnees c = this.carte.chercherPersonnage(p);
+		boolean rammasserObjets = true;
+		
+		if(c.getListeObjet().size() == 0)
+		{
+			rammasserObjets = false; //si on detecte pas d'objets sur la carte, on ne peut pas rammasser
+		}
+		
+		//
+		
+		System.out.println("vous pouvez:");
+		if (deplacer) {System.out.println("d: deplacer");}
+		if (attaquer) {System.out.println("a: attaquer");}
+		if (rammasserObjets) {System.out.println("ram: rammasser objets");}
+		if (p.getListeObjet().size() != 0) {System.out.println("u: utiliser objet");}
+		if (p.getListeObjet().size() != 0) {System.out.println("l: lacher des objets");}
+		if (p.getArme() != null || p.getArmure() != null) {System.out.println("des: desequiper objets");}
+		if (p.getArme() == null || p.getArmure() == null) {System.out.println("eq: equiper objets");}
+		
+		System.out.println("r: rien");
+		
+		String choix = input.next();
+		while (
+			!(choix.equals("d") || choix.equals("a") || choix.equals("r") || choix.equals("u") || choix.equals("ram")
+			|| choix.equals("l") || choix.equals("des") || choix.equals("eq")
+			) ||
+			(choix.equals("d") && !(deplacer)) ||
+			(choix.equals("a") && !(attaquer)) ||
+			(choix.equals("ram") && !(rammasserObjets)) ||
+			(choix.equals("u") && p.getListeObjet().size()==0)||
+			(choix.equals("l") && p.getListeObjet().size()==0)||
+			(choix.equals("des") && !(p.getArme() != null || p.getArmure() != null))||
+			(choix.equals("eq") && !(p.getArme() == null || p.getArmure() == null))
+			
+		){
+			System.out.println("choisissez un choix valide");
+			choix = input.next();
+		}
+		
+		if (choix.equals("d")) {leChoixEstFait = this.deplacement.choixDeplacement(p, autour);}
+		else if (choix.equals("a")) {leChoixEstFait = this.combat.choixAttaquer(p, autour);}
+		else if (choix.equals("u")) {leChoixEstFait = p.choixObjet();}
+		else if (choix.equals("ram")) {leChoixEstFait = p.ramasserObjet(c);}
+		else if (choix.equals("l")) {leChoixEstFait = p.lacherObjet(this.carte);}
+		else if (choix.equals("des")) {leChoixEstFait = p.desequiperObjet();}
+		else if (choix.equals("eq")) {leChoixEstFait = p.equiperObjet();}
+		else {p.setPa(0);}
+		
+		return leChoixEstFait; //Le jouer a vraiment fait un choix
+		
+	}
+	
+	//La m�thode principale donnant � l'utilisateur le choix de l'action � effectuer selon ce qui est disponible 
+	
+	public void partie() {
+		
+		this.participants=this.carte.getPersonnages();
+		boolean enVie = true;
+		//System.out.println("liste" + participants);
+		boolean leChoixEstFait = false;
+		while (enVie) {
+			enVie=false;
+			for (Personnage c:this.participants) {
+				System.out.println("au tour de " + c.getNom() +" " +c.getMetier());
+				while (c.getHp()>0 && c.getPa()>0) {
+					if (c.isJoueur()) {
+						
+						
+						//pour tester les objets
+						/*Objet potion1 = new Objet("potion");
+						Objet potion2 = new Objet("potion");
+						Objet potion3 = new Objet("potion");
+						Objet potion4 = new Objet("potion");
+						//System.out.println(potion.getNom());
+						c.ajouterObjet(potion1);
+						c.ajouterObjet(potion2);
+						c.ajouterObjet(potion3);
+						c.ajouterObjet(potion4);*/
+					
+						leChoixEstFait = false; //pour re-rentrer dans la boucle
+						//la boucle pour que le jouer puisse refaire un choix
+						while (leChoixEstFait == false) //Si c'est true, le joueur a fait un choix donc pas besoin de revenir
+						{
+						leChoixEstFait = this.choix(c);
+						}
+	
+						
+						
+					}
+					else if (c.isJoueur()==false) {
+						this.IA(c);
+					}
+					this.carte.dessinerMap();
+					
+				}
+			
+				c.setPa(c.getPamax());
+			}
+			
+			for (Personnage p:this.participants) {
+				enVie= enVie || (p.isJoueur() && p.getHp()>0);
+			}
+			System.out.println("nouveau tour");
+			
+		}
+		
+		this.participants=this.carte.getPersonnages();
+		
+		//this.dijkstra(this.participants.get(3));
+	}
+	
+	public void menu() //Utilise le menu apres la creation de la map (n'affiche pas la map apres la creation)
+	{
+		int choix;
+		
+		System.out.println("---BIENVENUE DANS NOTRE JEU---");
+		System.out.println("Veuillez choisir un mode:");
+		System.out.println("0: Un joueur");
+		System.out.println("1: Multijoueur");
+		
+		String action = this.input.next(); 
+		choix = verificationDesChoixMenuPrincipal(action,2);
+		
+		if(choix == 0)
+		{
+			System.out.println("Veuillez choisir un metier:");
+			System.out.println("0: guerrier");
+			System.out.println("1: voleur");
+			System.out.println("2: magicien");
+			
+			action = this.input.next(); 
+			int choixDuMetier = verificationDesChoixMenuPrincipal(action,3);
+			
+			System.out.println("Veuillez taper un nom du joueur");
+			action = this.input.next(); 
+			
+			System.out.println("Votre personnage a la lettre: J");
+			
+			if(choixDuMetier == 0)
+			{
+				Personnage a = new Personnage(action,true,"guerrier");
+				this.carte.remplacerSurLaMap(3, 2, 'J',a);
+			}
+			else if(choixDuMetier == 1)
+			{
+				Personnage a = new Personnage(action,true,"voleur");
+				this.carte.remplacerSurLaMap(3, 2, 'J',a);
+			}
+			else if(choixDuMetier == 2)
+			{
+				Personnage a = new Personnage(action,true,"magicien");
+				this.carte.remplacerSurLaMap(3, 2, 'J',a);
+			}
+		}
+		
+		else if (choix == 1)
+		{
+			System.out.println("Veuillez choisir le nombre de joueur :");
+			System.out.println("0: deux joueurs");
+			System.out.println("1: trois joueurs");
+			
+			action = this.input.next(); 
+			int choixNombreJoueurs = verificationDesChoixMenuPrincipal(action,2);
+			
+			if(choixNombreJoueurs == 2)
+			{
+				System.out.println("Veuillez choisir un metier:");
+				System.out.println("0: guerrier");
+				System.out.println("1: voleur");
+				System.out.println("2: magicien");
+				
+				action = this.input.next(); 
+				int choixDuMetier = verificationDesChoixMenuPrincipal(action,3);
+				
+				System.out.println("Veuillez taper un nom du joueur");
+				action = this.input.next(); 
+				
+				System.out.println("Votre personnage a la lettre: J");
+				
+				if(choixDuMetier == 0)
+				{
+					Personnage a = new Personnage(action,true,"guerrier");
+					this.carte.remplacerSurLaMap(3, 2, 'J',a);
+				}
+				else if(choixDuMetier == 1)
+				{
+					Personnage a = new Personnage(action,true,"voleur");
+					this.carte.remplacerSurLaMap(3, 2, 'J',a);
+				}
+				else if(choixDuMetier == 2)
+				{
+					Personnage a = new Personnage(action,true,"magicien");
+					this.carte.remplacerSurLaMap(3, 2, 'J',a);
+				}
+				
+				System.out.println();
+				System.out.println("---Personnage suivant---");
+				System.out.println();
+				
+				System.out.println("Veuillez choisir un metier:");
+				System.out.println("0: guerrier");
+				System.out.println("1: voleur");
+				System.out.println("2: magicien");
+				
+				action = this.input.next(); 
+				choixDuMetier = verificationDesChoixMenuPrincipal(action,3);
+				
+				System.out.println("Veuillez taper un nom du joueur");
+				action = this.input.next(); 
+				
+				System.out.println("Votre personnage a la lettre: G");
+				
+				if(choixDuMetier == 0)
+				{
+					Personnage b = new Personnage(action,true,"guerrier");
+					this.carte.remplacerSurLaMap(6, 2, 'G',b);
+				}
+				else if(choixDuMetier == 1)
+				{
+					Personnage b = new Personnage(action,true,"voleur");
+					this.carte.remplacerSurLaMap(6, 2, 'G',b);
+				}
+				else if(choixDuMetier == 2)
+				{
+					Personnage b = new Personnage(action,true,"magicien");
+					this.carte.remplacerSurLaMap(6, 2, 'G',b);
+				}
+				
+			}
+			
+			if(choixNombreJoueurs == 3)
+			{
+				System.out.println();
+				System.out.println("---Personnage suivant---");
+				System.out.println();
+				
+				System.out.println("Veuillez choisir un metier:");
+				System.out.println("0: guerrier");
+				System.out.println("1: voleur");
+				System.out.println("2: magicien");
+				
+				action = this.input.next(); 
+				int choixDuMetier = verificationDesChoixMenuPrincipal(action,3);
+				
+				System.out.println("Veuillez taper un nom du joueur");
+				action = this.input.next(); 
+				
+				System.out.println("Votre personnage a la lettre: P");
+				
+				if(choixDuMetier == 0)
+				{
+					Personnage c = new Personnage(action,true,"guerrier");
+					this.carte.remplacerSurLaMap(2, 6, 'P',c);
+				}
+				else if(choixDuMetier == 1)
+				{
+					Personnage c = new Personnage(action,true,"voleur");
+					this.carte.remplacerSurLaMap(2, 6, 'P',c);
+				}
+				else if(choixDuMetier == 2)
+				{
+					Personnage c = new Personnage(action,true,"magicien");
+					this.carte.remplacerSurLaMap(2, 6, 'P',c);
+				}
+			}
+			
+		}
+			
+		
+		
+	}
+	
+	public int verificationDesChoixMenuPrincipal(String action, int nombreDeChoix) //Pour simplifier le code du menu principale
+	{
+		nombreDeChoix -= 1;
+		int nombreChoix;
+		
+		try
+		{
+			nombreChoix = Integer.parseInt(action);
+		}
+		catch(Exception e)
+		{
+			nombreChoix = nombreDeChoix + 100;
+		}
+		
+		while(nombreChoix > nombreDeChoix )
+		{
+			try
+			{
+				nombreChoix = Integer.parseInt(action);
+				if( nombreChoix <= nombreDeChoix)
+				{
+					break;
+				}
+			}
+			catch(Exception e)
+			{
+				nombreChoix = nombreDeChoix + 100;
+			}
+			
+			
+			System.out.println("Votre choix n'est pas valide");
+			action = this.input.next();
+		}
+		
+		return nombreChoix;
+	}
+
+	public void IA(Personnage p) {
+		ArrayList<Coordonnees> autour = carte.scannerAutourCoordonnee(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY());
+		
+		System.out.println(p.getPa());
+		
+		boolean attaquer = false;
+		
+		for (Coordonnees c :autour) {
+			attaquer = attaquer || c.getPersonnage()!=null;
+		}
+		
+		if (attaquer) {
+			System.out.println("attaquer");
+			ArrayList<Personnage> attaquable = new ArrayList<Personnage>();
+			for (Coordonnees c:autour) {
+				if (c.getPersonnage()!=null) {attaquable.add(c.getPersonnage());}
+			}
+			Random rand = new Random();
+			this.combat.attaquer(p, attaquable.get(rand.nextInt(attaquable.size())));
+			
+		}
+		else {
+			System.out.println("deplacer");
+			Personnage cible = this.plusProche(p);
+			Coordonnees c = this.pathfinding(p, cible);
+			this.deplacementIA(p, c);
+		}
+	}
+		
+	public Personnage plusProche(Personnage p) {
+		int[] metrique = this.carte.dijkstra(p);
+		int iMax = 0;
+		
+		for (int i = 0; i<this.carte.getLargeur()*this.carte.getLongueur(); i++) {
+			if (this.carte.getTableau()[i].getPersonnage()!=null &&
+				this.carte.getTableau()[i].getPersonnage() != p &&
+				metrique[i]<metrique[iMax]){iMax=i;}
+		}
+		
+		
+		return this.carte.getTableau()[iMax].getPersonnage();
+	}
+		
+	
+	
+	public Coordonnees pathfinding (Personnage depart, Personnage cible) {
+		
+		
+		Coordonnees chemin[] = this.carte.dijkstra(depart, cible);
+		Coordonnees path = this.carte.chercherPersonnage(cible);
+		
+		Coordonnees precedent = path;
+		
+		
+		while (!(path.getX()==this.carte.chercherPersonnage(depart).getX() && path.getY()==this.carte.chercherPersonnage(depart).getY())) {
+			precedent = new Coordonnees(path);
+			path=chemin[path.getY()*this.carte.getLongueur()+path.getX()];
+		}
+		
+		
+		return precedent;
+		
+	}
+	
+	public void deplacementIA(Personnage p, Coordonnees c) {
+		System.out.println("deplacement IA");
+		if (c.getX() == this.carte.chercherPersonnage(p).getX()+1) {
+			this.deplacement.deplacerPersonnage(p, "d");
+		}
+		else if (c.getX() == this.carte.chercherPersonnage(p).getX()-1) {
+			this.deplacement.deplacerPersonnage(p, "g");
+		}
+		else if (c.getY() == this.carte.chercherPersonnage(p).getY()+1) {
+			this.deplacement.deplacerPersonnage(p, "b");
+		}
+		else if (c.getY() == this.carte.chercherPersonnage(p).getY()-1) {
+			this.deplacement.deplacerPersonnage(p, "h");
+		}
+		else {
+			System.out.println("WTF");
+		}
+		
+	}
+}

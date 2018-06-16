@@ -1,0 +1,39 @@
+
+public class Equipement {
+	String nom;
+	int degas;
+	int defence;
+	
+	public Equipement(String s,int degas, int defence)
+	{
+		this.nom = s;
+		this.degas=degas;
+		this.defence = defence;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getDegas() {
+		return degas;
+	}
+
+	public void setDegas(int degas) {
+		this.degas = degas;
+	}
+
+	public int getDefence() {
+		return defence;
+	}
+
+	public void setDefence(int defence) {
+		this.defence = defence;
+	}
+
+
+}
