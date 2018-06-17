@@ -38,7 +38,7 @@ public class Combat{
 		}
 		
 		else {
-			System.out.println("Ce n'est pas très efficace...");
+			System.out.println("Ce n'est pas tres efficace...");
 		}
 		attaquant.setPa(attaquant.getPa()-1);
 	}
@@ -47,31 +47,32 @@ public class Combat{
 	
 	public void mort(Personnage p){
 		
-		//Lacher les objets apres la mort
-		Coordonnees c = carte.chercherPersonnage(p);
+		if (p.getHp()<=0) {
+			
+			//Lacher les objets avant la mort
+			Coordonnees c = carte.chercherPersonnage(p);
 		
-		for(int i = 0; i < p.getListeObjet().size(); i++)
-		{
-			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getListeObjet().get(i) );
-			p.getListeObjet().remove(i);
-		}
-		if(p.getArme() != null)
-		{
-			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArme() );
-			p.setArme(null);
-		}
-		if(p.getArmure() != null)
-		{
-			this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArmure() );
-			p.setArmure(null);
-		}
+			for(int i = 0; i < p.getListeObjet().size(); i++)
+			{
+				this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getListeObjet().get(i) );
+				p.getListeObjet().remove(i);
+			}
+			if(p.getArme() != null)
+			{
+				this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArme() );
+				p.setArme(null);
+			}
+			if(p.getArmure() != null)
+			{
+				this.carte.ajouterObjetSurLaMap(c.getX(), c.getY(), p.getArmure() );
+				p.setArmure(null);
+			}
 		
 				
-		//Tuer le personnage
-		if (p.getHp()<=0) {
-		this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
-		
+			//Tuer le personnage
 	
+			this.carte.remplacerSurLaMap(this.carte.chercherPersonnage(p).getX(), this.carte.chercherPersonnage(p).getY(), ' ', null);}
+		
 	}
 	
 	//Mï¿½thode donnant au joueur le choix de la direction dans la quelle attaquer

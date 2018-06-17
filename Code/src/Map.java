@@ -531,7 +531,8 @@ public class Map {
 			}
 		}
 		
-		this.dessinerMap();
+		//Debugage
+		//this.dessinerMap();
 		
 		//verification d'une carte valide
 		
@@ -558,7 +559,8 @@ public class Map {
 			}
 		}
 		
-		System.out.println(erreur);
+		//Debugage
+		//System.out.println(erreur);
 		
 		if (erreur) {
 			this.viderCarte();

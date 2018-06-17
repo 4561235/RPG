@@ -130,7 +130,12 @@ public class Jeu {
 		while (continuer) {
 			continuer=false;
 			for (Personnage c:this.participants) {
-				System.out.println("au tour de " + c.getNom() +" " +c.getMetier());
+				
+				if(c.getHp() > 0) //Pour que ca n'affiche pas nouveau tour au personnage mort
+				{
+					System.out.println("au tour de " + c.getNom() +" " +c.getMetier());
+				}
+				
 				while (c.getHp()>0 && c.getPa()>0) {
 					if (c.isJoueur()) {
 						
